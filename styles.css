@@ -120,6 +120,7 @@ button {
       box-shadow: 4px 5px 17px -4px #20222283;
       justify-content: center;
      
+     
     } 
     .container {
         display: none;
@@ -131,7 +132,6 @@ button {
         animation-fill-mode: forwards;
         justify-content: center;
         margin-right: 7vh;
-        
       
       }
       
@@ -154,16 +154,16 @@ button {
     
     #menu li {
       display: block;
-      padding: 30px 0;
+      padding: 15px 0;
       text-align: center;
-      margin-bottom: 20%;
+      margin-bottom: 15%;
      
     }
     
     #menu li a {
         transition: width 1000ms;
         color: #2aaec5;
-        margin-bottom: 10%;
+        margin-bottom: 15%;
         font-size: 15px;
     }
     #menu li a:hover {
