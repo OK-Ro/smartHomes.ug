@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 17px -4px #03f0dc;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+#menu {
+    list-style: none;
+}
+
+#menu li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+#menu li a {
+    transition: width 1000ms;
+    color: #2aaec5;
+}
+
+#menu li a:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+    width: 250%;
+}
+
+.button {
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #2c9caf;
+    transition: all 1000ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid #2aaec5;
+}
+
+button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    outline: 2px solid #70bdca;
+    box-shadow: 4px 5px 17px -4px #268391;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #2c9caf;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
+}
+
+button:hover::before {
+    width: 250%;
+}
+
+li,
+a,
+button {
+    font-family: 'Poppins' sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(0, 40, 75);
+    text-decoration: none;
+}
+
+.logo-container {
+    width: 200px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+}
+
+  .mySlides img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out ;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .slide.previous {
+    transform: translateX(-100%);
+  }
+  
+  .slide.next {
+    transform: translateX(100%);
+  }
+  
+ 
+  
+  @keyframes slide {
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
