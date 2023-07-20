@@ -572,10 +572,10 @@ footer {
     align-items: center;
     box-shadow: 4px 5px 17px -4px #20222283;
     justify-content: center;
-    position: fixed;
     width: 100%;
     background-color: rgb(255, 255, 255);
     z-index: 999;
+    position:unset;
   }
 
   .container {
@@ -632,13 +632,14 @@ footer {
   }
 
   .logo-container {
-    width: 200px;
+   
+    width: 100px;
     height: 120px;
   }
 
   .toggle-wrapper {
     display: block;
-    position: fixed;
+    position:st;
     top: 5%;
     right: 0;
     margin-top: 20px;
@@ -725,8 +726,9 @@ footer {
     height: auto;
     background-color: #314a6bc2;
     width: 100%;
-    margin: 0 auto;
-   display: inline-block;
+    margin:auto;
+    display: inline-block;
+    padding-right: 3%;
   }
   
  
@@ -831,11 +833,13 @@ footer {
   .location-section{
     width: 100%;
     display: block;
+    
   }
   .location-items{
     width: 100%;
     margin-bottom: 20%;
     line-height: 50px;
+    color: #dbd4d4;
   }
   .location-items h1{
     font-size: 1.5rem;
@@ -845,7 +849,7 @@ footer {
   }
   .location-items p{
     font-size: 0.9rem;
-  
+    
   }
   
 .footer-el {
@@ -868,6 +872,7 @@ footer {
   padding: 20px;
   background-color: #f0f0f0;
   border-radius: 10px;
+  
 }
 
 .newsletter-form {
@@ -984,6 +989,7 @@ footer {
   right: 40px;
   display: none;
   padding: 15px;
+  height:7.6%;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #25d366;
