@@ -646,7 +646,6 @@ footer {
 
   .toggle-wrapper {
     display: block;
-    position: fixed;
     top: 5%;
     right: 0;
     margin-top: 20px;
