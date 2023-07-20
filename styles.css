@@ -19,7 +19,6 @@ body::-webkit-scrollbar {
   background-color: rgb(255, 255, 255);
   box-shadow: 4px 5px 17px -4px #20222283;
   z-index: 1000;
-  position: fixed;
   width: 100%;
 }
 
@@ -371,6 +370,16 @@ button {
   top: 40px;
   font-size: 0.9em;
 }
+
+.contact-button button{
+   padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2c9caf;
+  color: #fff;
+  cursor: pointer;
+}
+  
 .location-section {
  display: flex;
   justify-content: space-between;
@@ -639,7 +648,9 @@ footer {
 
   .toggle-wrapper {
     display: block;
+
     position:st;
+
     top: 5%;
     right: 0;
     margin-top: 20px;
@@ -796,7 +807,7 @@ footer {
   }
   .contact-container {
     width: 100%;
-    background-attachment: scroll;
+    
     height: fit-content;
   }
 
