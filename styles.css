@@ -417,6 +417,9 @@ button {
   text-align: left;
   width: 30%;
 }
+.location-items a {
+  color: #ff0000; 
+}
 
 .news-letter-info {
   padding: 20px;
