@@ -125,7 +125,7 @@ a,
   height: fit-content;
   align-items: center;
   text-align: center;
-  background-image: linear-gradient(to bottom, #314a6bc2, #ffffff);
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff);
  
 }
 .big-header-container {
@@ -157,7 +157,7 @@ a,
 .small-header-container h3 {
   font-size: 18px;
   font-weight: bold;
-  color:#e9dbdb;
+  color:#2c9caf;
   margin-bottom: 5%;
 }
 
