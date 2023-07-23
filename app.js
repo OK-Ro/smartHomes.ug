@@ -7,7 +7,7 @@ const hideContainer = () => {
 const handleMenuItemClick = (event) => {
   event.preventDefault();
 
-  const targetSectionId = this.getAttribute('href').substring(1);
+  const targetSectionId = event.currentTarget.getAttribute('href').substring(1);
   const targetSection = document.getElementById(targetSectionId);
   const headerOffset = 50; // Change this value based on your header's height
   const elementPosition = targetSection.getBoundingClientRect().top;
@@ -24,38 +24,16 @@ const handleMenuItemClick = (event) => {
   }
 };
 
-const checkbox = document.getElementById('checkbox');
-const container = document.querySelector('.container');
-const menuItems = document.querySelectorAll('#menu li a');
-const contactForm = document.querySelector('.form');
+// Function to handle checkbox click
+const handleCheckboxClick = () => {
+  container.style.display = checkbox.checked ? 'flex' : 'none';
+};
 
-// Add click event listener to the checkbox
-checkbox.addEventListener('click', function() {
-  if (this.checked) {
-    container.style.display = 'flex';
-  } else {
-    container.style.display = 'none';
-  }
-});
-
-// Add click event listeners to menu items based on screen size
-menuItems.forEach((menuItem) => {
-  if (window.matchMedia('(max-width: 768px)').matches) {
-    menuItem.addEventListener('click', handleMenuItemClick);
-  } else {
-    // If not a small screen, remove the event listener
-    menuItem.removeEventListener('click', handleMenuItemClick);
-  }
-});
-
-const form = document.querySelector('.form');
-const confirmationMessage = document.getElementById('confirmation-message');
-
-// Event listener for contact form submission
-form.addEventListener('submit', async (event) => {
+// Function to handle contact form submission
+const handleFormSubmit = async (event) => {
   event.preventDefault(); // Prevent the default form submission behavior
   const formData = new FormData(form);
-  const url = 'https://formspree.io/f/mqkvaqbo'; 
+  const url = 'https://formspree.io/f/mqkvaqbo';
 
   try {
     const response = await fetch(url, {
@@ -83,40 +61,34 @@ form.addEventListener('submit', async (event) => {
   }
 
   return false; // Return false to prevent the default form submission
-});
+};
 
-const newsletterForm = document.getElementById('newsletterForm');
-const emailInput = document.getElementById('emailInput');
-const newsletterConfirmationMessage = document.getElementById('confirmationMessage');
+// Function to validate email format
+const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
-// Event listener for newsletter form submission
-newsletterForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = emailInput.value;
-  if (isValidEmail(email)) {
-    displayConfirmationMessage();
+// Event listeners
+const checkbox = document.getElementById('checkbox');
+const container = document.querySelector('.container');
+const menuItems = document.querySelectorAll('#menu li a');
+const form = document.querySelector('.form');
+const confirmationMessage = document.getElementById('confirmation-message');
+
+checkbox.addEventListener('click', handleCheckboxClick);
+
+menuItems.forEach((menuItem) => {
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    menuItem.addEventListener('click', handleMenuItemClick);
   } else {
-    alert('Please enter a valid email address.');
+    menuItem.removeEventListener('click', handleMenuItemClick);
   }
 });
 
-// Function to display the confirmation message for newsletter form
-function displayConfirmationMessage() {
-  newsletterForm.reset();
-  newsletterConfirmationMessage.style.display = 'block';
-  setTimeout(() => {
-    newsletterConfirmationMessage.style.display = 'none';
-  }, 3000); // Hide the confirmation message after 3 seconds (you can adjust the time as needed)
-}
+form.addEventListener('submit', handleFormSubmit);
 
-// Function to validate email format
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-
-
+// DOMContentLoaded event listener for other actions
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const whatsappPopup = document.getElementById("whatsappPopup");
@@ -128,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 2000);
 });
 
-
+// Copyright notice
 const currentYear = new Date().getFullYear();
 const copyrightElement = document.getElementById('copyright');
 copyrightElement.textContent = `© ${currentYear} smart homes Ug, all rights reserved`;
