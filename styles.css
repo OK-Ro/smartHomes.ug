@@ -125,8 +125,7 @@ a,
   height: fit-content;
   align-items: center;
   text-align: center;
-  background-image: linear-gradient(to bottom, #ffffff, #ffffff);
- 
+  background-image: linear-gradient(to bottom,  #ffffff, #314a6ba1);
 }
 .big-header-container {
   display: inline-block;
@@ -191,6 +190,7 @@ width: 100%;
   vertical-align: top; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.74);
   animation: slideIn 5s ease-in-out ;
+  margin-bottom: 5%;
 }
 @keyframes slideIn {
   0% {
