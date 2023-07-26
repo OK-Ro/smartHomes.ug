@@ -35,4 +35,4 @@ https://www.digitalbusiness-cloud.de/wp-content/uploads/sites/3/teasers/teasers_
       </div>
     </div>
 
-    deme version https://ok-ro.github.io/smartHomes.ug/
+    [deme version] https://ok-ro.github.io/smartHomes.ug/
