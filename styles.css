@@ -951,7 +951,7 @@ footer {
 
   .main-content-container {
     width: 100%;
-    background-image: linear-gradient(to bottom, #314a6ba1, #ffffff);
+      background-image: linear-gradient(to bottom,  #ffffff, #314a6ba1);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding-left: 20px;
