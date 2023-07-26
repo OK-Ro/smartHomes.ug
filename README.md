@@ -34,3 +34,5 @@ https://www.digitalbusiness-cloud.de/wp-content/uploads/sites/3/teasers/teasers_
         <img src="https://www.haywardturnstiles.com/wp-content/uploads/2018/07/IMG_0414.jpg" alt=""> -->
       </div>
     </div>
+
+    deme version https://ok-ro.github.io/smartHomes.ug/
