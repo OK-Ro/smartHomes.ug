@@ -405,7 +405,14 @@ width: 100%;
   margin-bottom: 5%;
   color: #ffffff93;
 }
-
+.contact-button button{
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2c9caf;
+  color: #fff;
+  cursor: pointer;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -678,7 +685,7 @@ footer {
   display: block;
   text-align: center;
   text-decoration: none;
-  color: #ffeded;
+  color: #edfff8;
 }
 
 .whatsapp-popup a i {
@@ -815,7 +822,7 @@ footer {
 }
 
 .primary-button {
-  padding: 10px 42px;
+ 
   border-radius: 100px;
   border-width: 0;
   font-family: Montserrat;
@@ -827,7 +834,7 @@ footer {
 }
 
 .secondary-button {
-  padding: 10px 42px;
+  
   border-radius: 100px;
   border-width: 1px;
   border-style: solid;
@@ -1300,6 +1307,7 @@ footer {
   border-radius: 15px;
   height: 20vh; 
   text-align: center;
+  margin-bottom: 10%;
 }
 
 
@@ -1365,14 +1373,15 @@ footer {
 .whatsapp-popup {
   position: fixed;
   bottom: 20px;
-  right: 40px;
+  right: 10px;
   display: none;
-  padding: 15px;
-  height:7.6%;
-  border-radius: 50%;
+  padding: 3px;
+  height:7.5%;
+  border-radius: 49%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #25d366;
   animation: fadeIn 2s 5s forwards infinite;
+  
 }
 
 
@@ -1392,10 +1401,13 @@ footer {
   text-align: center;
   text-decoration: none;
   color: #ffeded;
+  
 }
 
 .whatsapp-popup a i {
-  font-size: 35px; /* Increased font size for the WhatsApp icon */
+  font-size: 50px; 
+  align-items: center;
+
 }
 
 .whatsapp-popup a:focus {
@@ -1406,58 +1418,180 @@ footer {
   justify-content: space-between;
   width: 100%;
   height:fit-content;
-  background-color: greenyellow;
+  background-color: #314a6bc2;
 
 }
 .feature-set1 {
   display: inline-block;
- 
-  background-color: #314a6bc2;
+  margin-bottom: 8%;
+  background-color: #ff4d00c2;
+  box-shadow: 0 2px 4px rgb(49, 48, 48);
+  border-radius: 10px;
   align-items: center;
   height: fit-content;
-  padding: 2%;
+  padding: 5%;
+  
 }
 
 .title-set1 {
   width: 100%;
-  text-align: center;
+  padding: 5%;
+ 
 }
 
 .title-set1 h1{
   margin: 0;
   padding: 0 0px; 
   color: #fff;
+  font-size: 1.8rem;
+  text-align: center;
  
 }
 .title-set1 h3{
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 20px;
-  width: 90%;
-  color: #fff;
+  width: 100%;
+  text-align:start;
  
 }
 
 .feature-image-set1 {
   width: 100%;
-  height: 55vh;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.74);
-
-  
+  margin-bottom: 5%;
 }
 .feature-image-set1 img{
   width: 100%;
+
+
+}
+.feature-support{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #ff4d00c2;
+  box-shadow: 0 2px 4px rgb(49, 48, 48);
+  border-radius: 10px;
+  padding: 5%;
+  color: #fff;
+}
+
+.feature-title-support h1{
+  text-align: center;
+  font-size: 1.8rem;
+}
+.feature-title-support h3{
+  font-size: 0.9rem;
+  text-align: start;
+  margin-bottom: 5%;
+}
+.feature-image-support{
+  width: 100%;
+  height: 80vh;
+  margin-bottom: 5%;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; 
   background-attachment: fixed;
-  object-fit: cover;
+}
+.feature-image-support img{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.feature-set2 {
+  display: flex; /* Change this to flex */
+  flex-direction: column-reverse;
+  background-color: #ff4d00c2;
+  box-shadow: 0 2px 4px rgb(49, 48, 48);
+  border-radius: 10px;
+  align-items: center;
+  height: fit-content;
+  padding: 5%;
+  margin-bottom: 8%;
+}
+
+.title-set2 {
+  width: 100%; 
+  padding: 5%;
+}
+.title-set-header {
+  width: 100%;
+  padding: 5%;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.title-set-header h3{
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align:start;
+ 
+}
+
+
+
+.title-set2 h1{
+  color: #fff;
+  font-size: 1.8rem;
+  text-align: center;
+}
+.title-set2 h3{
+  font-size: 1rem;
+  text-align:start;
+  width: 100%;
+;
+}
+
+.feature-image-set2  {
+  width: 100%;
+  margin-bottom: 5%;
+  
+}
+.feature-image-set2 img {
+  width: 100%;
+ 
   height: 100%;
 }
 
- 
+.feature-buttons {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  justify-content: center;
+  margin-bottom: 7%;
+
+}
+
+.primary-button {
+
+  width: 50%;
+  border-radius: 100px;
+  border-width: 0;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffffff;
+  line-height: 10px;
+  background-color: #2c9caf;
+}
+
+.secondary-button {
+  padding: 1%;
+  width: 50%;
+  border-radius: 100px;
+  border-width:  1px;
+  border-style: solid;
+  border-color: #00d9ff;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  color: #A7A7A7;
+  line-height: 26px;
+  background-color: transparent;
+}
+
+
  
 }
 
