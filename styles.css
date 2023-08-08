@@ -1020,15 +1020,15 @@ footer {
     
   }
   .main-header-container{
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: 6%;
+    padding-right: 6%;
   }
 
   .main-content-container {
     width: 100%;
       background-image: linear-gradient(to bottom,  #ffffff, #314a6ba1);
     border-radius: 8px;
-    box-shadow: 0 3px 1px rgba(49, 48, 48, 0.63);
+    box-shadow: 0 2px px rgba(0, 0, 0, 0.74);
     padding-left: 2%;
     padding-right: 2%;
 
