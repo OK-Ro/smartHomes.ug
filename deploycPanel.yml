@@ -1,3 +1,4 @@
+name: Deploy to cPanel
 
 on:
   push:
@@ -6,15 +7,16 @@ on:
 
 jobs:
   deploy:
-    name: 🎉 Deploy
+    name: Deploy to cPanel
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy to cPanel
+        uses: ilooser/cpanel-git-deploy-action@1.1
         with:
-          server: ftp.smarthomesug.com
-          username: smarthome@smarthomesug.com
-          password: ${{ secrets.ftp_password }}
+          cpanel_host: ${{ secrets.FTP_SERVER }}
+          cpanel_username: ${{ secrets.FTP_USERNAME }}
+          cpanel_password: ${{ secrets.FTP_PASSWORD }}
+          repository: OK-Ro/smartHomes.ug
