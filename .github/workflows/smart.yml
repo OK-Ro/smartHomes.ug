@@ -16,7 +16,9 @@ jobs:
     - name: cPanel Deploy Action
       uses: pinkasey/cpanel-deploy-action@v1.1.1
       with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-       
+        hostname: ${{ secrets.FTP_SERVER }}  # Use the appropriate secret
+        cpanel_token: ${{ secrets.CPANEL_API_TOKEN }}  # Use the appropriate secret
+        cpanel_username: your_cpanel_username
+        repository_root: path/to/your/files
+        updateRepository: true
+        branch: main
