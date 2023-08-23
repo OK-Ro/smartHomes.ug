@@ -21,4 +21,3 @@ jobs:
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         cpanel_domain: smarthomesug.com
         remote_dir: /public_html
-
