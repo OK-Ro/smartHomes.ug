@@ -3,7 +3,7 @@ name: Deploy to cPanel Server
 on:
   push:
     branches:
-      - main  
+      - main 
 
 jobs:
   deploy:
@@ -13,9 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to cPanel Server
-      uses: SamKirkland/FTP-Deploy-Action@4.x
+    - name: cPanel Deploy Action
+      uses: pinkasey/cpanel-deploy-action@v1.1.1
       with:
         ftp-server: ${{ secrets.FTP_SERVER }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
+        cpanel_domain: smarthomesug.com
+        remote_dir: /public_html
+
