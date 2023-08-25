@@ -106,6 +106,7 @@ const currentYear = new Date().getFullYear();
 const copyrightElement = document.getElementById('copyright');
 copyrightElement.textContent = `© ${currentYear} smart homes Ug, all rights reserved`;
 
+
 function showAboutSection() {
   console.log("About Us menu item clicked!"); // Add this line to log a message
   
@@ -197,3 +198,17 @@ function showHomeSection() {
     clientsSection.style.display = 'none';
   }
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var videos = document.querySelectorAll("video");
+
+  videos.forEach(function(video) {
+      video.addEventListener("ended", function() {
+          this.currentTime = 0;
+          this.play();
+      });
+  });
+});
+
