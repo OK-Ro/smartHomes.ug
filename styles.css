@@ -697,6 +697,7 @@ footer {
   width: 100%;
   height:800vh;
   padding: 5%;
+  padding-top: 300px;
 }
 .feature-set1 {
   display: flex;
@@ -723,6 +724,7 @@ footer {
   width: 90%;
   color: #fff;
 }
+
 
 .feature-image-set1 {
   width: 50%;
@@ -835,8 +837,9 @@ footer {
   background-color: transparent;
 }
 #clients {
-  background-color: #25d366;
-  padding: 20px 0; 
+  width: 100%;
+  padding-top: 200px; 
+  
 }
 .clients-container {
   display: flex;
@@ -844,9 +847,66 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 100px;
-
+  
 }
+.client-info {
+ 
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.client-info h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.client-info h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.client-info p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.client-video {
+  background-color: #333;
+  padding: 3px;
+  width: 50%;
+  height: 20%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.74);
+  margin: 2% auto 2%; /* Added margin for spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+  
+  animation: zoomIn 1.5s ease-in-out; 
+}
+  /* Animation keyframes */
+  @keyframes zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.client-video video {
+  border-radius: 18px;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 
 .client-card {
   
@@ -896,6 +956,44 @@ footer {
   margin-top: 10px;
   color: #e74c3c;
   font-weight: bold;
+}
+
+.testimonial {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  font-style: italic;
+  color: #666;
 }
 
 
@@ -1143,12 +1241,12 @@ footer {
     background-color: #ffffff;
     color: #2c9caf ;
   }
-  .header-img-block {
+  .header-video-block {
   
   width: 100%;
   }
   
-  .header-img-block img {
+  .header-video-block video {
     width: 90%;
     height: 80%;
     border-top-left-radius: 30px;
