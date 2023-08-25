@@ -9,7 +9,7 @@ const handleMenuItemClick = (event) => {
 
   const targetSectionId = event.currentTarget.getAttribute('href').substring(1);
   const targetSection = document.getElementById(targetSectionId);
-  const headerOffset = 50; // Change this value based on your header's height
+  const headerOffset = 10; // Change this value based on your header's height
   const elementPosition = targetSection.getBoundingClientRect().top;
   const offsetPosition = elementPosition - headerOffset;
 
@@ -17,6 +17,7 @@ const handleMenuItemClick = (event) => {
     top: offsetPosition,
     behavior: 'smooth'
   });
+
 
   // Hide the container after clicking a menu item on small screens
   if (window.matchMedia('(max-width: 768px)').matches) {
@@ -106,6 +107,99 @@ const copyrightElement = document.getElementById('copyright');
 copyrightElement.textContent = `© ${currentYear} smart homes Ug, all rights reserved`;
 
 
+function showAboutSection() {
+  console.log("About Us menu item clicked!"); // Add this line to log a message
+  
+  // Hide the Home section
+  var homeSection = document.getElementById("home");
+  if (homeSection) {
+      homeSection.style.display = 'none';
+  }
+  
+  // Display the About Us section
+  var aboutSection = document.getElementById("about");
+  if (aboutSection) {
+      aboutSection.style.display = 'block';
+  }
+  
+}
+
+
+function showServicesSection() {
+  console.log("Services menu item clicked!"); // Log a message
+  
+  // Hide the other sections
+  var homeSection = document.getElementById("home");
+  var aboutSection = document.getElementById("about");
+  var clientsSection = document.getElementById("clients");
+  if (homeSection) {
+      homeSection.style.display = 'none';
+  }
+  if (aboutSection) {
+      aboutSection.style.display = 'none';
+  }
+  if (clientsSection) {
+      clientsSection.style.display = 'none';
+  }
+  
+  // Display the Services section
+  var servicesSection = document.getElementById("serv");
+  if (servicesSection) {
+      servicesSection.style.display = 'block';
+  }
+}
+
+function showClientsSection() {
+  console.log("Clients menu item clicked!"); // Log a message
+  
+  // Hide the other sections
+  var homeSection = document.getElementById("home");
+  var aboutSection = document.getElementById("about");
+  var servicesSection = document.getElementById("serv");
+  if (homeSection) {
+      homeSection.style.display = 'none';
+  }
+  if (aboutSection) {
+      aboutSection.style.display = 'none';
+  }
+  if (servicesSection) {
+      servicesSection.style.display = 'none';
+  }
+  
+  // Display the Clients section
+  var clientsSection = document.getElementById("clients");
+  if (clientsSection) {
+      clientsSection.style.display = 'block';
+  }
+}
+
+function showHomeSection() {
+  console.log("Home menu item clicked!"); // Log a message
+  
+  // Hide the other sections
+  var aboutSection = document.getElementById("about");
+  var servicesSection = document.getElementById("serv");
+  var clientsSection = document.getElementById("clients");
+  
+  // Display the Home section
+  var homeSection = document.getElementById("home");
+  if (homeSection) {
+    homeSection.style.display = 'block';
+  }
+  
+  // Hide the other sections
+  if (aboutSection) {
+    aboutSection.style.display = 'none';
+  }
+  if (servicesSection) {
+    servicesSection.style.display = 'none';
+  }
+  if (clientsSection) {
+    clientsSection.style.display = 'none';
+  }
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
   var videos = document.querySelectorAll("video");
@@ -117,3 +211,4 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 });
+
