@@ -9,7 +9,7 @@ const handleMenuItemClick = (event) => {
 
   const targetSectionId = event.currentTarget.getAttribute('href').substring(1);
   const targetSection = document.getElementById(targetSectionId);
-  const headerOffset = 10; // Change this value based on your header's height
+  const headerOffset = 520; // Change this value based on your header's height
   const elementPosition = targetSection.getBoundingClientRect().top;
   const offsetPosition = elementPosition - headerOffset;
 
@@ -106,7 +106,6 @@ const currentYear = new Date().getFullYear();
 const copyrightElement = document.getElementById('copyright');
 copyrightElement.textContent = `© ${currentYear} smart homes Ug, all rights reserved`;
 
-
 function showAboutSection() {
   console.log("About Us menu item clicked!"); // Add this line to log a message
   
@@ -200,7 +199,6 @@ function showHomeSection() {
 }
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
   var videos = document.querySelectorAll("video");
 
@@ -211,4 +209,3 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 });
-
