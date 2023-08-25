@@ -104,3 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
 const currentYear = new Date().getFullYear();
 const copyrightElement = document.getElementById('copyright');
 copyrightElement.textContent = `© ${currentYear} smart homes Ug, all rights reserved`;
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var videos = document.querySelectorAll("video");
+
+  videos.forEach(function(video) {
+      video.addEventListener("ended", function() {
+          this.currentTime = 0;
+          this.play();
+      });
+  });
+});
