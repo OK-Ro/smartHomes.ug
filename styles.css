@@ -183,8 +183,8 @@ width: 100%;
 }
 
 .header-video-block video {
-  width: 60%;
-  height: 35%;
+  width: 62vw;
+  height: 35vw;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   vertical-align: top; 
@@ -876,8 +876,8 @@ footer {
 .client-video {
   background-color: #333;
   padding: 3px;
-  width: 50%;
-  height: 20%;
+  width: 52vw;
+  height: 20vw;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.74);
   margin: 2% auto 2%; /* Added margin for spacing */
   display: flex;
@@ -1247,13 +1247,7 @@ footer {
   }
   
   .header-video-block video {
-    width: 90%;
-    height: 80%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    vertical-align: top; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.74);
-    animation: slideIn 5s ease-in-out ;
+
   }
   @keyframes slideIn {
     0% {
