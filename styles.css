@@ -139,14 +139,27 @@ a,
   font-size: 6rem;
   font-weight: bold;
   color: #ff6600;
-  animation: slideIn 1s ease-in-out;
 }
 .big-header-container P {
   font-size: 1.5rem;
   font-weight: bolder;
   color: #2ac57a;
-  animation: slideIn 1s ease-in-out;
 }
+@keyframes animateFromTop {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.house-emoji {
+  display: inline-block;
+  animation: animateFromTop 10s ease-out;
+}
+
 .small-header-container {
   display: inline-block;
   align-items: center;
