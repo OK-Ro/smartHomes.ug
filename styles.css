@@ -118,7 +118,7 @@ a,
 }
 .main-content-container {
   width: 100%;
-  margin: 0;
+  margin-bottom: 1.5rem;
   padding-top: 10px;
   height: fit-content;
   align-items: center;
@@ -199,6 +199,90 @@ a,
     transform: translateY(0);
   }
 }
+/* Style for the featured products container */
+.featured-products-container {
+  background-image: linear-gradient(#ffffff, #314a6ba1);
+}
+.products-container {
+  width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+/* Style for the products header */
+.products-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.products-header h1 {
+  color: #314a6ba1;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.products-header p {
+  color: #8b8484;
+  font-size: 1.2em;
+}
+
+/* Style for the product cards */
+.products-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 6rem;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.products-card:hover {
+  transform: scale(1.02);
+}
+
+/* Style for the product images */
+.products-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Style for the product details */
+.products-details {
+  padding: 20px;
+}
+
+.products-details h2 {
+  color: #314a6ba1;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.products-details p {
+  color: #314a6ba1;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Style for the Learn More button */
+.products-button {
+  background-color: #2ac57a;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.products-button:hover {
+  background-color: #297fb8;
+}
 
 .about-section {
   height: 160vh;
@@ -234,8 +318,7 @@ a,
   background-repeat: no-repeat;
   background-position: center center;
 }
-.about-header-info {
-}
+
 .about-header-info h3 {
   color: white;
 }
@@ -267,7 +350,7 @@ a,
   background-color: #314a6bc2;
   width: 100%;
   margin: 0 auto;
-  padding-top: 2rem;
+  padding-top: 10rem;
   position: relative;
 }
 
@@ -849,22 +932,19 @@ footer {
 
 .client-info {
   margin-bottom: 30px;
-  margin-top: 10rem;
+  margin-top: 8rem;
+  background-color: #314a6bc2;
+  padding: 5rem;
 }
 
 .client-info h1 {
   font-size: 36px;
-  color: #333;
-}
-
-.client-info h3 {
-  font-size: 24px;
-  color: #666;
+  color: white;
 }
 
 .client-info p {
   font-size: 18px;
-  color: #888;
+  color: #fffefe;
 }
 
 .client-video {
@@ -1108,7 +1188,7 @@ footer {
   }
   .about-section {
     display: 100%;
-    height: 145vh;
+    height: 150vh;
     padding: 8%;
   }
   .about-header {
@@ -1137,8 +1217,8 @@ footer {
     font-size: 0.8rem;
   }
   .main-header-container {
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: 3%;
+    padding-right: 3%;
   }
 
   .main-content-container {
@@ -1153,6 +1233,9 @@ footer {
 
   .big-header-container h1 {
     font-size: 2.4rem;
+  }
+  .big-header-container P {
+    font-size: 0.8rem;
   }
   .small-header-container {
     width: 100%;
@@ -1185,12 +1268,12 @@ footer {
     width: 100%;
   }
 
-  .header-video-block video {
+  /* .header-video-block video {
     width: 100%;
     height: 80%;
     vertical-align: top;
     animation: slideIn 5s ease-in-out;
-  }
+  } */
   @keyframes slideIn {
     0% {
       opacity: 0;
@@ -1200,6 +1283,11 @@ footer {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Responsive container width */
+  .products-container {
+    width: 100%;
   }
 
   .services-container {
@@ -1634,6 +1722,21 @@ footer {
     line-height: 26px;
     background-color: transparent;
   }
+  .testimonial {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+  }
+
+  .client-info {
+    margin-top: 1rem;
+
+    padding: 2rem;
+  }
+
+  .client-logo {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
@@ -1732,5 +1835,10 @@ footer {
 
   .toggle-wrapper {
     display: none;
+  }
+
+  /* Responsive container width */
+  .products-container {
+    width: 100%;
   }
 }
