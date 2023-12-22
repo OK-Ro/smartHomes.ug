@@ -169,7 +169,7 @@ a,
 .small-header-container h3 {
   font-size: 18px;
   font-weight: bold;
-  color: #314a6bc2;
+  color: #e8e4e4;
   margin-bottom: 5%;
 }
 
@@ -1201,7 +1201,7 @@ footer {
   }
   .about-section {
     display: 100%;
-    height: 150vh;
+    height: 155vh;
     padding: 8%;
   }
   .about-header {
@@ -1257,6 +1257,7 @@ footer {
   .small-header-container h3 {
     font-size: 0.9rem;
     font-weight: bold;
+    padding: 1rem;
   }
 
   .header-button button {
@@ -1301,6 +1302,11 @@ footer {
   /* Responsive container width */
   .products-container {
     width: 100%;
+  }
+
+  .products-card {
+    margin-bottom: 2rem;
+    border: 4px solid #fff;
   }
 
   .services-container {
@@ -1740,9 +1746,12 @@ footer {
     margin-right: 0.6rem;
   }
 
+  #clients {
+    padding: 0px 0;
+  }
+
   .client-info {
     margin-top: 1rem;
-
     padding: 2rem;
   }
 
