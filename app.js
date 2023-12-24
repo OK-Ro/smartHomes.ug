@@ -214,3 +214,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+const projectImages = [
+  "url_to_project_image_1.jpg",
+  "url_to_project_image_2.jpg",
+  "url_to_project_image_3.jpg",
+  // Add more image URLs as needed
+];
