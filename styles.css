@@ -335,6 +335,64 @@ a,
 .about-header-info h3 {
   color: white;
 }
+
+/* Add some basic styles for the container */
+.about-slider {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Style each slide */
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Style the images within the slides */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Style the pagination dots */
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Style the navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Adjust the position of the navigation buttons */
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
 /* Style for the container */
 /* Style for the container */
 .borderline {
@@ -1260,6 +1318,30 @@ footer {
     margin-bottom: 15%;
     font-size: 0.8rem;
   }
+
+  /* Add some basic styles for the container */
+  .about-slider {
+    width: 100%;
+    height: 40vh;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 0.5rem;
+  }
+
+  /* Style each slide */
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Style the images within the slides */
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
   .main-header-container {
     padding-left: 3%;
     padding-right: 3%;

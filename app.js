@@ -215,9 +215,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const projectImages = [
-  "url_to_project_image_1.jpg",
-  "url_to_project_image_2.jpg",
-  "url_to_project_image_3.jpg",
-  // Add more image URLs as needed
-];
+var aboutSlider = new Swiper(".about-slider", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+});
