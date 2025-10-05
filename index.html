@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Homes UG - Site Under Maintenance</title>
+    <title>Smart Homes UG - Maintenance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,162 +12,237 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #0f0c29;
+            --secondary: #302b63;
+            --accent: #ff6b00;
+            --accent-light: #ff8c00;
+            --text: #ffffff;
+            --text-secondary: #cbd5e1;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.12);
+        }
+
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), #24243e);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        body::before {
-            content: "";
+        /* Animated Background */
+        .background-animation {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(
-                circle at 20% 80%,
-                rgba(255, 107, 0, 0.1) 0%,
-                transparent 50%
-            ),
-            radial-gradient(
-                circle at 80% 20%,
-                rgba(255, 140, 0, 0.08) 0%,
-                transparent 50%
-            );
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
         }
 
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 20px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 40px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-20px, 20px) rotate(270deg);
+            }
+        }
+
+        /* Main Container */
         .maintenance-container {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
             position: relative;
             z-index: 2;
-            animation: fadeIn 1s ease-out;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Content Section */
+        .content-section {
+            padding: 40px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: slideInLeft 1s ease-out;
         }
 
-        .company-logo {
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .brand-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
+            font-size: 24px;
+            color: white;
         }
 
-        .shield-icon {
-            font-size: 2rem;
-            animation: gentlePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .company-name {
-            font-size: 1.8rem;
+        .brand-text h1 {
+            font-size: 28px;
             font-weight: 800;
-            background: linear-gradient(135deg, #ff6b00, #ff8c00, #ffa940);
+            background: linear-gradient(135deg, var(--text), var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 0.5px;
         }
 
-        .maintenance-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: bounce 2s ease-in-out infinite;
+        .brand-text p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
-        @keyframes bounce {
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
             0%, 100% {
-                transform: translateY(0);
+                opacity: 1;
             }
             50% {
-                transform: translateY(-10px);
+                opacity: 0.5;
             }
         }
 
-        h1 {
-            font-size: 2.5rem;
+        h2 {
+            font-size: 42px;
             font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff, #cbd5e1);
+            background: linear-gradient(135deg, var(--text), var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, #ff6b00, #ff8c00);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+        .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            margin-bottom: 30px;
+        .description {
+            font-size: 18px;
             line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
         }
 
+        /* Progress Section */
         .progress-section {
             margin: 30px 0;
         }
 
-        .progress-label {
+        .progress-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
+        }
+
+        .progress-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .progress-percentage {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
         }
 
         .progress-bar {
-            width: 100%;
-            height: 6px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 4px;
             width: 85%;
             position: relative;
-            animation: progressAnimation 2s ease-in-out infinite;
+            animation: progressAnimation 3s ease-in-out infinite;
         }
 
         @keyframes progressAnimation {
@@ -175,177 +250,400 @@
                 transform: translateX(0);
             }
             50% {
-                transform: translateX(10px);
+                transform: translateX(5px);
             }
         }
 
-        .contact-info {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin: 30px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .contact-info h3 {
-            font-size: 1.2rem;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 30px;
+        }
+
+        .contact-title {
+            font-size: 18px;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #ff6b00;
+            color: var(--accent);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
 
-        .contact-item {
+        .contact-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .contact-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Visual Section */
+        .visual-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .main-visual {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
         }
 
-        .contact-item i {
-            color: #ff6b00;
+        .main-icon {
+            font-size: 180px;
+            color: var(--accent);
+            filter: drop-shadow(0 10px 20px rgba(255, 107, 0, 0.3));
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        .orbital-ring {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(255, 107, 0, 0.2);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .orbital-ring::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent);
         }
 
-        .countdown {
-            font-size: 1.1rem;
-            color: #ff6b00;
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .countdown-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .countdown-display {
+            font-size: 24px;
             font-weight: 700;
-            margin: 20px 0;
+            color: var(--accent);
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
         }
 
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .floating {
-            position: absolute;
-            font-size: 2rem;
-            animation: floatAround 20s linear infinite;
-            opacity: 0.3;
-        }
-
-        .security { top: 10%; left: 5%; animation-delay: 0s; }
-        .shield { top: 20%; right: 10%; animation-delay: -5s; }
-        .camera { bottom: 30%; left: 15%; animation-delay: -10s; }
-        .lock { bottom: 15%; right: 5%; animation-delay: -15s; }
-
-        @keyframes floatAround {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, 100px) rotate(90deg); }
-            50% { transform: translate(50px, 200px) rotate(180deg); }
-            75% { transform: translate(-50px, 100px) rotate(270deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .maintenance-container {
-                margin: 20px;
-                padding: 30px 25px;
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
-
-            h1 {
-                font-size: 2rem;
+            
+            .content-section {
+                padding: 30px;
             }
-
-            .company-name {
-                font-size: 1.5rem;
+            
+            h2 {
+                font-size: 36px;
+            }
+            
+            .main-icon {
+                font-size: 140px;
             }
         }
 
-        @media (max-width: 480px) {
-            .maintenance-container {
-                padding: 25px 20px;
+        @media (max-width: 640px) {
+            .features-grid {
+                grid-template-columns: 1fr;
             }
-
-            h1 {
-                font-size: 1.8rem;
+            
+            h2 {
+                font-size: 32px;
             }
-
-            .maintenance-icon {
-                font-size: 3rem;
+            
+            .main-icon {
+                font-size: 120px;
+            }
+            
+            .orbital-ring {
+                width: 250px;
+                height: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="maintenance-container">
-        <div class="company-logo">
-            <div class="shield-icon">🛡️</div>
-            <div class="company-name">Smart Homes UG</div>
-        </div>
-
-        <div class="maintenance-icon">🚧</div>
-        
-        <h1>Website Under Maintenance</h1>
-        
-        <div class="status-badge">ENHANCEMENTS IN PROGRESS</div>
-        
-        <p class="subtitle">
-            We're currently upgrading our website with exciting new features and enhanced security. 
-            Our team is working diligently to deliver an exceptional experience.
-        </p>
-
-        <div class="progress-section">
-            <div class="progress-label">
-                <span>Update Progress</span>
-                <span>85%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-
-        <div class="contact-info">
-            <h3>Need Immediate Assistance?</h3>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+256 787 393053</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>smarthomesug@gmail.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp: +256 787 393053</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="countdown" id="countdown">
-            🔄 Expected Completion: Very Soon
-        </div>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
     </div>
 
-    <div class="floating-elements">
-        <div class="floating security">🔒</div>
-        <div class="floating shield">🛡️</div>
-        <div class="floating camera">📹</div>
-        <div class="floating lock">🔑</div>
+    <!-- Main Container -->
+    <div class="maintenance-container">
+        <!-- Content Section -->
+        <div class="content-section">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Smart Homes UG</h1>
+                    <p>Secure Solutions Since 2017</p>
+                </div>
+            </div>
+
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>ENHANCEMENTS IN PROGRESS</span>
+            </div>
+
+            <h2>We're Building Something <span class="highlight">Amazing</span></h2>
+            
+            <p class="description">
+                Our website is undergoing a major upgrade with enhanced security features, 
+                improved performance, and a better user experience. We appreciate your patience 
+                as we work to deliver an exceptional platform.
+            </p>
+
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-label">Update Progress</span>
+                    <span class="progress-percentage">85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="feature-text">Enhanced Performance</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="feature-text">Advanced Security</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span class="feature-text">Mobile Optimization</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <span class="feature-text">New Features</span>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3 class="contact-title">Need Immediate Assistance?</h3>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">+256 787 393053</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">smarthomesug@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-value">+256 787 393053</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Section -->
+        <div class="visual-section">
+            <div class="main-visual">
+                <div class="orbital-ring"></div>
+                <div class="main-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+            </div>
+
+            <div class="countdown-container">
+                <div class="countdown-title">Expected Completion</div>
+                <div class="countdown-display" id="countdown">
+                    Very Soon
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Simple countdown animation
+        // Countdown text animation
         const countdownElement = document.getElementById('countdown');
         const messages = [
-            "🔄 Expected Completion: Very Soon",
-            "⚡ Almost There: Final Touches",
-            "🎯 Launching: Preparing for Launch",
-            "🚀 Exciting Updates Coming Soon"
+            "Very Soon",
+            "Final Stages",
+            "Almost Ready",
+            "Launching Shortly"
         ];
         
         let currentMessage = 0;
