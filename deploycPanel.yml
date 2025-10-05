@@ -1,21 +1,36 @@
+# 🚀 DEPLOYMENT WORKFLOW
+# This workflow automatically deploys your code to hosting via FTP
+# whenever you push changes to the main branch.
+
 on:
   push:
     branches:
-      - main
+      - main              # 👉 Runs only on pushes to main branch
+                          # 💡 Change to 'master' if your main branch is called master
 
 jobs:
   deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4  
+    name: 🎉 Deploy to Hosting
+    runs-on: ubuntu-latest # 👉 Uses latest Ubuntu Linux environment
+                           # 💡 This is a fresh virtual machine each time
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    steps:
+      # STEP 1: DOWNLOAD CODE FROM GITHUB
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4  # 👉 Downloads your repository code
+                                   # 💡 This makes your files available to subsequent steps
+
+      # STEP 2: UPLOAD TO WEB HOSTING VIA FTP
+      - name: 📂 Sync files to hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4  # 👉 Popular FTP deployment tool
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: "/public_html/"  
-          local-dir: "./"            
+          # 🔐 SECURITY: These values come from encrypted secrets (Settings > Secrets)
+          server: ${{ secrets.FTP_SERVER }}        # 👉 Your FTP hostname (e.g., yourdomain.com)
+          username: ${{ secrets.FTP_USERNAME }}    # 👉 Your FTP login username  
+          password: ${{ secrets.FTP_PASSWORD }}    # 👉 Your FTP login password
+          
+          # 📁 FOLDER MAPPING
+          server-dir: "/public_html/"              # 👉 Where files go on your server
+                                                   # 💡 Common: /public_html/, /htdocs/, /www/
+          local-dir: "./"                          # 👉 Which local files to upload
+                                                   # 💡 "./" means "all files in repository root"
