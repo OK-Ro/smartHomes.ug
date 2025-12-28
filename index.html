@@ -154,6 +154,17 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
+        .cta-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.35);
+        }
+
+        .cta-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
+        }
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -374,14 +385,47 @@
             color: #6e6e73;
         }
 
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .container {
+            max-width: 100%;
+        
+        },
             h1 {
                 font-size: 3.5rem;
                 letter-spacing: -2px;
+             
             }
 
             .subtitle {
                 font-size: 1.3rem;
+                   margin-bottom:10px;
             }
 
             .form-row {
@@ -395,10 +439,76 @@
             .stats {
                 padding: 3rem 2rem;
                 gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .card {
                 padding: 2rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 350px;
+                justify-content: center;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .contact h2 {
+                font-size: 2.5rem;
+            }
+
+            .stat-num {
+                font-size: 3rem;
+            }
+
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 0 3rem;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -419,6 +529,7 @@
             <div class="cta-group">
                 <a href="tel:+256123456789" class="cta-btn cta-primary">📞 Call Us</a>
                 <a href="mailto:info@smarthomesug.com" class="cta-btn cta-secondary">✉️ Email</a>
+                <a href="https://wa.me/256123456789?text=Hi%20Smart%20Homes%20UG%2C%20I%20need%20help%20with%20my%20smart%20home%20system" class="cta-btn cta-whatsapp" target="_blank">💬 WhatsApp</a>
             </div>
         </section>
 
@@ -493,6 +604,11 @@
             </form>
         </section>
     </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/256123456789?text=Hi%20Smart%20Homes%20UG%2C%20I%20need%20help%20with%20my%20smart%20home%20system" class="whatsapp-float" target="_blank">
+        💬
+    </a>
 
     <footer>
         <p>&copy; 2025 Smart Homes UG. All Rights Reserved.</p>
