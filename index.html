@@ -1,625 +1,2241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Homes UG - Under Maintenance</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #fef7ff 0%, #f0f9ff 30%, #fff 100%);
-            color: #1d1d1f;
-            overflow-x: hidden;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            backdrop-filter: blur(30px);
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ff6b9d 0%, #c471ed 50%, #12c2e9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.65rem 1.75rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: pulse-dot 2s ease infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        h1 {
-            font-size: 5.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff6b9d 0%, #c471ed 50%, #12c2e9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            line-height: 1;
-            letter-spacing: -4px;
-        }
-
-        .subtitle {
-            font-size: 1.75rem;
-            color: #6e6e73;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 5rem;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .cta-primary {
-            background: linear-gradient(135deg, #ff6b9d 0%, #c471ed 100%);
-            color: white;
-            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.35);
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(255, 107, 157, 0.5);
-        }
-
-        .cta-secondary {
-            background: white;
-            color: #1d1d1f;
-            border: 2px solid #e0e0e0;
-        }
-
-        .cta-secondary:hover {
-            border-color: #ff6b9d;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.35);
-        }
-
-        .cta-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            padding: 3rem 0 5rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .icon {
-            transform: scale(1.1) rotate(-5deg);
-        }
-
-        .icon-pink {
-            background: linear-gradient(135deg, #ffeef7 0%, #ffe0ee 100%);
-        }
-
-        .icon-blue {
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-        }
-
-        .icon-purple {
-            background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%);
-        }
-
-        .card h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            color: #1d1d1f;
-            letter-spacing: -0.5px;
-        }
-
-        .card p {
-            color: #6e6e73;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
-        .stats {
-            background: linear-gradient(135deg, #fff 0%, #fef7ff 100%);
-            border-radius: 40px;
-            padding: 4rem 3rem;
-            margin: 4rem 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-num {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff6b9d 0%, #c471ed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #6e6e73;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .contact {
-            background: white;
-            border-radius: 40px;
-            padding: 5rem 4rem;
-            margin: 5rem 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact h2 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ff6b9d 0%, #c471ed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-        }
-
-        .contact-subtitle {
-            text-align: center;
-            font-size: 1.4rem;
-            color: #6e6e73;
-            margin-bottom: 3rem;
-            font-weight: 500;
-        }
-
-        form {
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #1d1d1f;
-            font-size: 0.95rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 1.1rem 1.5rem;
-            border: 2px solid #e5e5e7;
-            border-radius: 15px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: #fafafa;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #ff6b9d;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.1);
-        }
-
-        textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1.4rem;
-            background: linear-gradient(135deg, #ff6b9d 0%, #c471ed 100%);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.35);
-            letter-spacing: 0.5px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(255, 107, 157, 0.5);
-        }
-
-        .success {
-            display: none;
-            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-            color: white;
-            padding: 1.25rem;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 1.5rem;
-            font-weight: 700;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #6e6e73;
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-                letter-spacing: -2px;
-            }
-
-            .subtitle {
-                font-size: 1.3rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact {
-                padding: 3rem 2rem;
-            }
-
-            .stats {
-                padding: 3rem 2rem;
-                gap: 2rem;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .card {
-                padding: 2rem;
-            }
-
-            .hero {
-                padding: 4rem 1rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                margin-bottom: 3rem;
-            }
-
-            .cta-btn {
-                width: 100%;
-                max-width: 350px;
-                justify-content: center;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .contact h2 {
-                font-size: 2.5rem;
-            }
-
-            .stat-num {
-                font-size: 3rem;
-            }
-
-            .nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 2rem 0 3rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="nav">
-        <div class="logo">SMART HOMES UG</div>
-    </nav>
-
-    <div class="container">
-        <section class="hero">
-            <div class="badge">
-                <span class="dot"></span>
-                Under Maintenance
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Smart Homes UG - Premium Security & Automation Solutions</title>
+    <meta
+      name="description"
+      content="Uganda's leading provider of smart home security, CCTV systems, IoT solutions, and home automation. Professional installation with 24/7 support."
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+  </head>
+  <body>
+
+    <!-- Header & Navigation --> 
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <div class="nav-brand">
+            <a href="#hero" class="logo-link">
+              <div class="logo-container">
+                <img
+                  class="logo"
+                  src="/images/logo.jpg"
+                  alt="Smart Homes UG Logo"
+                />
+              </div>
+            </a>
+          </div>
+
+          <div class="nav-menu" id="navMenu">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="#hero" class="nav-link active">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="#about" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="#services" class="nav-link">Services</a>
+              </li>
+              <li class="nav-item">
+                <a href="#projects" class="nav-link">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a href="#clients" class="nav-link">Clients</a>
+              </li>
+              <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+              </li>
+            </ul>
+
+            <div class="nav-actions">
+              <a href="tel:+256787393053" class="phone-link">
+                <i class="fas fa-phone-alt"></i>
+                +256 787 393053
+              </a>
+              <a href="#contact" class="btn btn-primary">Get Quote</a>
             </div>
-            <h1>We're Upgrading</h1>
-            <p class="subtitle">Our website is getting a fresh new look with exciting features. We'll be back online shortly with an enhanced experience!</p>
-            <div class="cta-group">
-                <a href="tel:+256787393053" class="cta-btn cta-primary">📞 Call Us Now</a>
-                <a href="mailto:info@smarthomesug.com" class="cta-btn cta-secondary">✉️ Email Support</a>
-                <a href="https://wa.me/256787393053?text=Hi%20Smart%20Homes%20UG%2C%20I%20need%20help%20with%20my%20smart%20home%20system" class="cta-btn cta-whatsapp" target="_blank">💬 WhatsApp Chat</a>
-            </div>
-        </section>
+          </div>
 
-        <section class="features">
-            <div class="card">
-                <div class="icon icon-pink">⚡</div>
-                <h3>Faster Performance</h3>
-                <p>Experience blazing-fast speeds with our optimized platform for seamless smart home management.</p>
-            </div>
-            <div class="card">
-                <div class="icon icon-blue">✨</div>
-                <h3>New Features</h3>
-                <p>Discover powerful new tools and integrations designed to simplify your smart home experience.</p>
-            </div>
-            <div class="card">
-                <div class="icon icon-purple">🔒</div>
-                <h3>Enhanced Security</h3>
-                <p>Your data is protected with state-of-the-art security measures and encryption technology.</p>
-            </div>
-        </section>
+          <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-        <section class="stats">
-            <div class="stat">
-                <span class="stat-num">200+</span>
-                <span class="stat-label">Happy Clients</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">1,200+</span>
-                <span class="stat-label">Devices Installed</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">98%</span>
-                <span class="stat-label">Satisfaction</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">24/7</span>
-                <span class="stat-label">Support</span>
-            </div>
-        </section>
+    <!-- Main Content -->
+    <main class="main">
+        <section id="hero" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <div class="hero-badge">
+                <span>Intelligent Home Automation Since 2017</span>
+              </div>
+              <h1 class="hero-title2">
+                Transform Your Home Space with
+                <span class="smart-home-brand">Smart HomesUg</span>
+              </h1>
+              <p class="hero-description">
+                Experience the future of home living with our cutting-edge smart
+                home solutions. Control, monitor, and automate your home from
+                anywhere in the world with seamless integration.
+              </p>
 
-        <section class="contact">
-            <h2>Need Help?</h2>
-            <p class="contact-subtitle">Our team is ready to assist with your smart home needs</p>
-            
-            <form id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" required placeholder="Enter Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" required placeholder="+256 787 393 053">
-                    </div>
+              <div class="hero-stats">
+                <div class="stat">
+                  <span class="stat-number">1K+</span>
+                  <span class="stat-label">Smart Homes</span>
                 </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" required placeholder="info@smarthomesug.com">
+                <div class="stat">
+                  <span class="stat-number">99.8%</span>
+                  <span class="stat-label">Uptime</span>
                 </div>
-                <div class="form-group">
-                    <label>Service Required</label>
-                    <input type="text" required placeholder="e.g., Smart Lighting, Security, Automation">
+                <div class="stat">
+                  <span class="stat-number">24/7</span>
+                  <span class="stat-label">Support</span>
                 </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea required placeholder="Tell us about your smart home needs..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-                <div id="success" class="success">
-                    ✓ Thank you! We'll respond within 24 hours.
-                </div>
-            </form>
-        </section>
+              </div>
+
+              <div class="hero-actions">
+                <a href="#solutions" class="btn btn-primary">
+                  <i class="fas fa-rocket"></i>
+                  Explore Solutions
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                  <i class="fas fa-calendar"></i>
+                  Book Demo
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+          <div class="smart-home-dashboard">
+         <div class="dashboard-header">
+             <div class="dashboard-info">
+      <div class="dashboard-title">Smart Home Control</div>
+      <div class="dashboard-subtitle">Live • 4 Devices Online</div>
+    </div>
+<div class="connection-badge">
+  <div class="live-dot"></div>
+  <span>Online</span>
+</div>
+  </div>
+  
+  <div class="device-grid">
+    <!-- Security Camera Card -->
+    <div class="device-card security-card">
+      <div class="device-header">
+        <div class="device-icon">📹</div>
+        <div class="device-info">
+          <div class="device-name">Security Cam</div>
+          <div class="device-location">Front Door</div>
+        </div>
+        <div class="live-indicator">
+          <div class="pulse-dot"></div>
+          LIVE
+        </div>
+      </div>
+      <div class="device-visual">
+        <div class="camera-preview">
+          <img src="https://media1.tenor.com/images/7a36bcda27a510056a110af533fb5699/tenor.gif?itemid=13600490" alt="Front Door Camera Live Feed" class="camera-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="image-placeholder">
+            <div class="placeholder-content">
+              <div class="camera-icon">📹</div>
+              <div class="placeholder-text">Live Feed Loading...</div>
+            </div>
+          </div>
+          <div class="preview-overlay">
+            <div class="timestamp">LIVE 14:23</div>
+            <div class="motion-alert">
+              <span class="motion-dot"></span>
+              No Motion
+            </div>
+          </div>
+        </div>
+        <div class="quick-controls">
+          <button class="control-btn record active">
+            <span class="btn-dot"></span>
+            Recording
+          </button>
+          <button class="control-btn audio">
+            <span class="btn-icon">🎤</span>
+            Audio
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/256787393053?text=Hi%20Smart%20Homes%20UG%2C%20I%20need%20help%20with%20my%20smart%20home%20system" class="whatsapp-float" target="_blank">
-        💬
-    </a>
+    <!-- Smart Lock Card -->
+    <div class="device-card lock-card">
+      <div class="device-header">
+        <div class="device-icon">🔒</div>
+        <div class="device-info">
+          <div class="device-name">Smart Lock</div>
+          <div class="device-location">Main Door</div>
+        </div>
+        <div class="device-status locked">Locked</div>
+      </div>
+      <div class="device-visual">
+        <div class="lock-visual">
+          <div class="lock-icon">
+            <div class="lock-bolt"></div>
+          </div>
+          <div class="lock-state">Secured</div>
+        </div>
+        <div class="quick-controls">
+          <button class="control-btn unlock">Unlock</button>
+          <button class="control-btn history">History</button>
+        </div>
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Smart Homes UG. All Rights Reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">
-            <strong>Contact:</strong> +256 787 393 053 | info@smarthomesug.com
+    <!-- Lighting Card -->
+    <div class="device-card lighting-card">
+      <div class="device-header">
+        <div class="device-icon">💡</div>
+        <div class="device-info">
+          <div class="device-name">Lighting</div>
+          <div class="device-location">Living Room</div>
+        </div>
+        <div class="device-status on">75%</div>
+      </div>
+      <div class="device-visual">
+        <div class="lighting-control">
+          <div class="brightness-display">
+            <div class="brightness-icon">☀️</div>
+            <div class="brightness-level">75%</div>
+          </div>
+          <div class="brightness-slider">
+            <div class="slider-track">
+              <div class="slider-fill" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="quick-controls">
+          <button class="control-btn scene">Scene</button>
+          <button class="control-btn power active">On</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Climate Card -->
+    <div class="device-card climate-card">
+      <div class="device-header">
+        <div class="device-icon">🌡️</div>
+        <div class="device-info">
+          <div class="device-name">Climate</div>
+          <div class="device-location">Main Floor</div>
+        </div>
+        <div class="device-status">22°C</div>
+      </div>
+      <div class="device-visual">
+        <div class="climate-display">
+          <div class="current-temp">22.5°C</div>
+          <div class="climate-stats">
+            <div class="stat">Humidity: 45%</div>
+            <div class="stat">Auto</div>
+          </div>
+        </div>
+        <div class="quick-controls">
+          <button class="control-btn temp-down">-</button>
+          <button class="control-btn temp-up">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Professional Solutions Section -->
+      <section id="solutions" class="solutions-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">INTEGRATED SOLUTIONS</div>
+            <h2 class="section-title">Smart Home Ecosystem</h2>
+            <p class="section-description">
+              Complete home automation powered by AI. Seamlessly integrated
+              systems that work together to create the ultimate living
+              experience.
+            </p>
+          </div>
+
+
+          <!-- Amazing Voice Assistant Integration Banner -->
+          <div class="integration-banner">
+            <div class="banner-content">
+              <div class="voice-assistant-demo">
+                <div class="assistant-header">
+                  <div class="assistant-avatar">
+                    <i class="fas fa-microphone-alt"></i>
+                    <div class="pulse-ring"></div>
+                  </div>
+                  <div class="assistant-status">
+                    <span class="status-text">Ready</span>
+                    <div class="status-dot"></div>
+                  </div>
+                </div>
+
+                <div class="conversation-interface">
+                  <div class="user-query">
+                    <div class="query-bubble typing">
+                      <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                      <span class="query-text"></span>
+                    </div>
+                  </div>
+
+                  <div class="assistant-response">
+                    <div class="response-bubble">
+                      <div class="response-content">
+                        <span class="response-text"></span>
+                      </div>
+                      <div class="response-actions">
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="voice-trigger">
+                  <div class="trigger-circle">
+                    <i class="fas fa-microphone"></i>
+                  </div>
+                  <div class="trigger-label">Say "Hey Smart Home"</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="banner-visual">
+              <div class="smart-actions-grid">
+                <div class="action-card" data-action="lights">
+                  <div class="action-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="action-text">Turn on living room lights</div>
+                  <div class="action-wave"></div>
+                </div>
+
+                <div class="action-card" data-action="climate">
+                  <div class="action-icon">
+                    <i class="fas fa-thermometer-half"></i>
+                  </div>
+                  <div class="action-text">Set temperature to 22°C</div>
+                  <div class="action-wave"></div>
+                </div>
+
+                <div class="action-card" data-action="security">
+                  <div class="action-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="action-text">Lock all doors</div>
+                  <div class="action-wave"></div>
+                </div>
+
+                <div class="action-card" data-action="entertainment">
+                  <div class="action-icon">
+                    <i class="fas fa-music"></i>
+                  </div>
+                  <div class="action-text">Play jazz in kitchen</div>
+                  <div class="action-wave"></div>
+                </div>
+              </div>
+
+              <div class="integration-platforms">
+                <div class="platform-item">
+                  <i class="fab fa-apple"></i>
+                  <span>Siri</span>
+                </div>
+                <div class="platform-item">
+                  <i class="fab fa-google"></i>
+                  <span>Google Assistant</span>
+                </div>
+                <div class="platform-item">
+                  <i class="fab fa-amazon"></i>
+                  <span>Alexa</span>
+                </div>
+                <div class="platform-item">
+                  <i class="fas fa-robot"></i>
+                  <span>Smart Home AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modern Features Section -->
+      <section class="features-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Why Choose Smart HomesUg?</h2>
+            <p class="section-subtitle">
+              Our smart home solutions are designed with cutting-edge technology
+              and user experience at the forefront.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card slide-in-left">
+              <div class="feature-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <h3 class="feature-title">Seamless Integration</h3>
+              <p class="feature-description">
+                All our devices work together harmoniously, creating a unified
+                smart home ecosystem that adapts to your lifestyle.
+              </p>
+              <span class="feature-badge">Plug & Play</span>
+            </div>
+
+       <div class="feature-card fade-in">
+  <div class="feature-icon">
+    <i class="fas fa-microphone-alt"></i>
+  </div>
+  <h3 class="feature-title">Voice Control</h3>
+  <p class="feature-description">
+    Control your smart home with simple voice commands. Compatible with Alexa, Google Assistant, and Siri for hands-free convenience.
+  </p>
+  <span class="feature-badge">Hands-Free</span>
+</div>
+
+            <div class="feature-card slide-in-right">
+              <div class="feature-icon">
+                <i class="fas fa-user-shield"></i>
+              </div>
+              <h3 class="feature-title">Privacy First</h3>
+              <p class="feature-description">
+                Your data is encrypted and stored securely, with privacy
+                controls you manage. We never share your information.
+              </p>
+              <span class="feature-badge">Secure & Private</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Modern Story Section -->
+      <section class="story-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">The Smart Home Revolution</h2>
+            <p class="section-subtitle">
+              Discover how smart technology transforms ordinary homes into
+              intelligent, secure, and efficient living spaces that adapt to
+              your lifestyle.
+            </p>
+          </div>
+
+          <div class="story-grid">
+            <div class="story-card fade-up">
+              <div class="story-highlight" style="--x: 70%; --y: 30%"></div>
+              <div class="story-icon">🏠</div>
+              <h3 class="story-title">Intelligent Security</h3>
+              <p class="story-description">
+                Protect your home with AI-powered security systems that learn
+                your patterns and alert you to any unusual activity with
+                real-time monitoring.
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Facial recognition cameras</li>
+                <li>
+                  <i class="fas fa-check"></i> Smart doorbell with AI detection
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Automated emergency response
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Remote access from anywhere
+                </li>
+              </ul>
+            </div>
+
+            <div class="story-card fade-up">
+              <div class="story-highlight" style="--x: 30%; --y: 60%"></div>
+              <div class="story-icon">⚡</div>
+              <h3 class="story-title">Energy Intelligence</h3>
+              <p class="story-description">
+                Smart energy management that learns your habits and optimizes
+                consumption, reducing costs while maintaining perfect comfort
+                levels.
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> AI-powered climate control</li>
+                <li><i class="fas fa-check"></i> Smart lighting automation</li>
+                <li><i class="fas fa-check"></i> Energy usage analytics</li>
+                <li><i class="fas fa-check"></i> Solar integration ready</li>
+              </ul>
+            </div>
+
+            <div class="story-card fade-up">
+              <div class="story-highlight" style="--x: 60%; --y: 70%"></div>
+              <div class="story-icon">🤖</div>
+              <h3 class="story-title">Automated Living</h3>
+              <p class="story-description">
+                Create personalized routines that adapt to your lifestyle, from
+                morning wake-up sequences to evening relaxation modes and
+                everything between.
+              </p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Voice-controlled routines</li>
+                <li><i class="fas fa-check"></i> Multi-room audio sync</li>
+                <li>
+                  <i class="fas fa-check"></i> Smart appliance integration
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Personalized scene creation
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Progress Indicator -->
+          <div class="progress-indicator">
+            <div class="progress-dot active" data-card="0"></div>
+            <div class="progress-dot" data-card="1"></div>
+            <div class="progress-dot" data-card="2"></div>
+          </div>
+
+          <!-- Stats Section -->
+          <div class="story-stats">
+            <div class="stat-item">
+              <span class="stat-number">5,000+</span>
+              <span class="stat-label">Smart Homes</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">40%</span>
+              <span class="stat-label">Energy Saved</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">99.8%</span>
+              <span class="stat-label">Satisfaction</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </div>
+</section>
+
+          <!-- Clients Stats -->
+          <div class="clients-stats">
+            <div class="client-stat fade-in-up">
+              <div class="stat-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Client Partnerships</span>
+            </div>
+
+            <div class="client-stat fade-in-up">
+              <div class="stat-icon">
+                <i class="fas fa-industry"></i>
+              </div>
+              <span class="stat-number">12+</span>
+              <span class="stat-label">Industries Served</span>
+            </div>
+
+            <div class="client-stat fade-in-up">
+              <div class="stat-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <span class="stat-number">99.8%</span>
+              <span class="stat-label">System Uptime</span>
+            </div>
+
+            <div class="client-stat fade-in-up">
+              <div class="stat-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Client Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+  <!-- Modern Minimal Solutions Section -->
+<section class="solutions-minimal">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Smart Solutions</h2>
+      <p class="section-subtitle">
+        Transforming spaces with intelligent security and automation
+      </p>
+    </div>
+
+    <div class="solutions-layout">
+      <!-- Left Side - Info -->
+      <div class="solutions-info">
+        <div class="info-section">
+          <div class="info-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="info-content">
+            <h3>Residential</h3>
+            <p>Smart home security and automation systems</p>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="info-content">
+            <h3>Commercial</h3>
+            <p>Enterprise security and business automation</p>
+          </div>
+        </div>
+
+        <!-- Replaced Stats with Images/Icons -->
+        <div class="features-visual">
+          <div class="feature-visual-item">
+            <div class="visual-icon">
+              <i class="fas fa-shield-check"></i>
+            </div>
+            <img src="https://i.ytimg.com/vi/RM5vp74yXqg/maxresdefault.jpg" alt="Security Shield" />
+          </div>
+          <div class="feature-visual-item">
+            <div class="visual-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <img src="https://www.guardianviewtechnologygh.com/wp-content/uploads/2019/11/electric-fencing.jpg" alt="Automation" />
+          </div>
+          <div class="feature-visual-item">
+            <div class="visual-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/streams/2013/November/131121/2D9751898-map-kampala.jpg" alt="Connectivity" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Images -->
+      <div class="solutions-visual">
+        <div class="image-stack">
+          <div class="main-image">
+            <img src="https://storables.com/wp-content/uploads/2023/11/how-to-design-home-security-system-1700833107.jpeg" alt="Smart Home Control" />
+            <div class="image-overlay">
+              <span>Smart Home Control</span>
+            </div>
+          </div>
+          <div class="secondary-image">
+            <img src="https://sp.co.id/assets/images/backgrounds/1.jpg" alt="Security System" />
+            <div class="image-overlay">
+              <span>Security Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="featured-products">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">An Intelligent Home Experience</h2>
+      <p class="section-subtitle">
+        Step into a world of seamless control and enhanced security. Our
+        cutting-edge products redefine home living, offering informed
+        insights and empowering you to shape your surroundings.
+      </p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <div class="product-image">
+            <img src="https://thegadgetflow.com/wp-content/uploads/2021/01/HeimVision-Assure-B1-smart-home-security-hub-07.jpg" alt="Smart Security System" />
+          </div>
+          <div class="product-badge">Security</div>
+        </div>
+        <div class="product-content">
+          <h3>Smart Security Hub</h3>
+          <p>Centralized control for your entire home security ecosystem with real-time monitoring</p>
+          <div class="product-features">
+            <span>24/7 Monitoring</span>
+      
+            <span>AI Detection</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <div class="product-image">
+            <img src="https://thumbs.dreamstime.com/b/controlling-smart-bulb-mobile-app-home-automation-concept-smartphone-cute-light-smiling-face-cozy-room-setup-375887025.jpg" alt="Home Automation" />
+          </div>
+          <div class="product-badge">Automation</div>
+        </div>
+        <div class="product-content">
+          <h3>Intelligent Control System</h3>
+          <p>Voice-controlled automation for lighting, climate, and entertainment throughout your home</p>
+          <div class="product-features">
+            <span>Voice Control</span>
+            <span>Energy Saving</span>
+      
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-visual">
+          <div class="product-image">
+            <img src="https://fireaction.co.uk/wp-content/uploads/2020/07/iStock-969328162.jpg" alt="Smart Access" />
+          </div>
+          <div class="product-badge">Access</div>
+        </div>
+        <div class="product-content">
+          <h3>Smart Access Control</h3>
+          <p>Keyless entry systems with biometric authentication and remote access management</p>
+          <div class="product-features">
+            <span>Biometric Scan</span>
+            <span>Remote Access</span>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-modern">
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="about-hero">
+      <div class="about-hero-content">
+        <div class="section-header">
+          <div class="accent-line"></div>
+
+             <span class="about-label">About Us</span>
+          <h2 class="section-title">Redefining Smart Living in Uganda</h2>
+          <p class="section-subtitle">
+            Pioneering intelligent spaces since 2017 with cutting-edge security and automation solutions
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">9+</span>
+            <span class="stat-label">Years Excellence</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">20,500+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-stack">
+          <div class="image-main">
+            <img src="https://static.vecteezy.com/system/resources/previews/022/144/287/large_2x/growth-strategy-business-graph-analysis-concept-on-finance-chart-data-diagram-3d-background-wallpaper-ai-generated-photo.jpg" alt="Smart Home Installation" />
+            <div class="image-overlay">
+              <span>Trusted Since 2017</span>
+            </div>
+          </div>
+          <div class="image-secondary">
+            <img src="https://business.walmart.com/content/b2b/en_us/articles/business-security-solutions/jcr:content/par/wrapper/wrapper-par/wrapper/wrapper-par/image_2_0_1109680484.img.jpg/1724881370432.jpg" alt="Security Systems" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story & Mission Section -->
+    <div class="story-mission-grid">
+      <!-- Left Column - Story -->
+      <div class="story-section">
+        <div class="section-card">
+          <div class="card-header">
+            <i class="fas fa-history"></i>
+            <h1>Our Journey</h1>
+          </div>
+          <div class="card-content">
+            <p>
+              Founded in 2017, Smart Homes UG began with a vision to democratize smart technology in Uganda. What started as a small team of passionate technicians has grown into the nation's most trusted smart solutions provider.
+            </p>
+            <p>
+              We've transformed thousands of spaces, from residential homes to commercial complexes, creating intelligent environments that enhance security, convenience, and energy efficiency.
+            </p>
+          </div>
+          <div class="card-visual">
+            <img src="https://wallpaperaccess.com/full/9239384.jpg" alt="Our Team" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Mission & Vision -->
+      <div class="mission-section">
+        <div class="mission-cards">
+          <div class="mission-card large">
+            <div class="card-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h1>Our Mission</h1>
+            <p>To enhance safety, convenience, and energy efficiency through accessible smart technology solutions that transform how Ugandans live and work.</p>
+          </div>
+
+          <div class="mission-card small">
+            <div class="card-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h1>Our Vision</h1>
+            <p>To be East Africa's leading smart technology innovator, setting new standards for intelligent living and business operations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Values Section - Professional Redesign -->
+<div class="values-section-pro">
+  <div class="container">
+    <div class="section-header-pro">
+      <div class="header-decoration">
+        <div class="decoration-line"></div>
+        <div class="decoration-dot"></div>
+        <div class="decoration-line"></div>
+      </div>
+      <h2>Our Core Principles</h2>
+      <p class="section-subtitle-pro">
+        The foundation of everything we deliver - built on trust, innovation, and excellence
+      </p>
+    </div>
+
+    <div class="values-grid-pro">
+      <!-- Value 1 -->
+      <div class="value-item-pro">
+        <div class="value-graphic">
+          <div class="graphic-container">
+            <div class="graphic-bg"></div>
+            <i class="fas fa-shield-check"></i>
+          </div>
+          <div class="value-number">01</div>
+        </div>
+        <div class="value-content-pro">
+          <h3>Security First Approach</h3>
+          <p>Every solution begins with your safety. We implement multi-layered security systems that protect what matters most to you and your business.</p>
+          <ul class="value-features">
+            <li>Advanced threat detection</li>
+            <li>24/7 monitoring systems</li>
+            <li>Regular security audits</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Value 2 -->
+      <div class="value-item-pro">
+        <div class="value-graphic">
+          <div class="graphic-container">
+            <div class="graphic-bg"></div>
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="value-number">02</div>
+        </div>
+        <div class="value-content-pro">
+          <h3>Cutting-Edge Innovation</h3>
+          <p>We stay at the forefront of technology, continuously integrating the latest advancements to deliver future-proof solutions for our clients.</p>
+          <ul class="value-features">
+            <li>AI-powered systems</li>
+            <li>IoT integration</li>
+            <li>Smart automation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Value 3 -->
+      <div class="value-item-pro">
+        <div class="value-graphic">
+          <div class="graphic-container">
+            <div class="graphic-bg"></div>
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="value-number">03</div>
+        </div>
+        <div class="value-content-pro">
+          <h3>Uncompromising Integrity</h3>
+          <p>Transparency and honesty form the cornerstone of our client relationships. We deliver exactly what we promise, every time.</p>
+          <ul class="value-features">
+            <li>Clear pricing</li>
+            <li>Honest assessments</li>
+            <li>No hidden costs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Value 4 -->
+      <div class="value-item-pro">
+        <div class="value-graphic">
+          <div class="graphic-container">
+            <div class="graphic-bg"></div>
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="value-number">04</div>
+        </div>
+        <div class="value-content-pro">
+          <h3>24/7 Expert Support</h3>
+          <p>Our commitment doesn't end with installation. We provide round-the-clock support and proactive maintenance to ensure optimal performance.</p>
+          <ul class="value-features">
+            <li>Dedicated support team</li>
+            <li>Rapid response times</li>
+            <li>Preventive maintenance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Client Trust Section -->
+    <div class="trust-section">
+      <div class="trust-content">
+        <h1>Trusted by Uganda's Leading Organizations</h1>
+        <p>From government institutions to private enterprises, we've earned the trust of those who value security and innovation.</p>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <i class="fas fa-award"></i>
+            <span>Certified Installers</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-shield-check"></i>
+            <span>Licensed & Insured</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-medal"></i>
+            <span>Industry Awards</span>
+          </div>
+        </div>
+      </div>
+      <div class="trust-visual">
+        <img src="https://www.parliament.go.ug/themes/businessgroup_zymphonies_theme/img/p5.jpg" alt="Professional Team" />
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Services Story Section -->
+<section id="services" class="services-story">
+  <div class="container">
+    <!-- Hero Story -->
+    <div class="services-hero-story">
+      <div class="story-content">
+        <span class="story-badge">Our Service Journey</span>
+        <h1 class="story-title">Building Safer, Smarter Uganda Since 2017</h1>
+        <p class="story-description">
+          From a single CCTV installation to Uganda's most trusted security and automation partner, 
+          we've been transforming spaces and protecting futures for nearly a decade.
         </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <span class="stat-number">9</span>
+            <span class="stat-text">Years Protecting Uganda</span>
+          </div>
+          <div class="story-stat">
+            <span class="stat-number">15+</span>
+            <span class="stat-text">Service Categories</span>
+          </div>
+          <div class="story-stat">
+            <span class="stat-number">2,500+</span>
+            <span class="stat-text">Spaces Secured</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mixed Card Grid -->
+    <div class="services-mosaic">
+      <!-- Large Featured Card -->
+      <div class="card-featured" data-category="security">
+        <div class="card-visual">
+          <img src="https://clarkesecurity.com.au/wp-content/uploads/cctv_dvrs1.jpg" alt="CCTV Security">
+          <div class="featured-badge">Most Popular</div>
+        </div>
+        <div class="card-content">
+          <h3>Complete Security Systems</h3>
+          <p>Your journey to safety starts here. We've installed over 1,000 CCTV systems across Uganda, 
+             from small homes to large enterprises.</p>
+          <div class="service-highlights">
+            <span>✓ 24/7 Monitoring</span>
+            <span>✓ Remote Access</span>
+            <span>✓ AI Detection</span>
+          </div>
+          <button class="btn-featured">Start Your Security Journey</button>
+        </div>
+      </div>
+
+ <!-- Medium Card - Smart Home Automation -->
+<div class="card-medium" data-category="automation">
+  <div class="card-image-wrapper">
+    <img src="https://www.total-automation.co.uk/wp-content/uploads/2024/04/vecteezy_automatic-barrier-gate.jpg.webp" alt="Smart Home Automation">
+    <div class="image-overlay"></div>
+    <div class="card-category-badge">
+      <i class="fas fa-home"></i>
+      <span>Automation</span>
+    </div>
+  </div>
+  <div class="card-content">
+    <h4>Smart Home Automation</h4>
+    <p>Transform your living space with intelligent control systems that learn your lifestyle and adapt automatically.</p>
+  
+  </div>
+</div>
+
+<!-- Medium Card - Commercial Solutions -->
+<div class="card-medium" data-category="commercial">
+  <div class="card-image-wrapper">
+    <img src="https://flashugnews.com/wp-content/uploads/2023/06/sheraton-house.jpg" alt="Commercial Building">
+    <div class="image-overlay"></div>
+    <div class="card-category-badge">
+      <i class="fas fa-building"></i>
+      <span>Commercial</span>
+    </div>
+  </div>
+  <div class="card-content">
+    <h4>Commercial Solutions</h4>
+    <p>Enterprise-grade security for businesses that can't afford downtime. Complete protection 24/7.</p>
+
+  </div>
+</div>
+      <!-- Small Cards Grid -->
+      <div class="cards-mini-grid">
+        <div class="card-mini" data-category="security">
+          <div class="mini-icon">
+            <i class="fas fa-fire"></i>
+          </div>
+          <h5>Fire Systems</h5>
+          <p>Advanced detection with instant alerts</p>
+        </div>
+
+        <div class="card-mini" data-category="access">
+          <div class="mini-icon">
+            <i class="fas fa-door-closed"></i>
+          </div>
+          <h5>Access Control</h5>
+          <p>Smart entry management</p>
+        </div>
+
+        <div class="card-mini" data-category="commercial">
+          <div class="mini-icon">
+            <i class="fas fa-sign-in-alt"></i>
+          </div>
+          <h5>Turnstiles</h5>
+          <p>Secure crowd management</p>
+        </div>
+
+        <div class="card-mini" data-category="commercial">
+          <div class="mini-icon">
+            <i class="fas fa-parking"></i>
+          </div>
+          <h5>Parking Systems</h5>
+          <p>Smart space optimization</p>
+        </div>
+      </div>
+
+      <!-- Story Card -->
+      <div class="card-story">
+        <div class="story-visual">
+          <img src="https://www.monitor.co.ug/resource/blob/3721102/8e6ba1154da23e2c3dbc64b80d647757/home03pix-data.jpg" alt="Our Team">
+        </div>
+      </div>
+
+      <!-- Installation & Maintenance Card -->
+      <div class="card-full" data-category="maintenance">
+        <div class="full-content">
+          <div class="full-text">
+            <h3>Complete Installation & Maintenance</h3>
+            <p>From electric fences to escalators, we handle installation, maintenance, and energizing of all security products. 
+               Your one-stop solution for peace of mind.</p>
+            <div class="service-list">
+              <span>✓ CCTV Systems</span>
+              <span>✓ Electric Fences</span>
+              <span>✓ Automatic Gates</span>
+              <span>✓ Access Control</span>
+              <span>✓ Parking Systems</span>
+              <span>✓ Door Automation</span>
+            </div>
+          </div>
+          <div class="full-visual">
+            <img src="https://datacentrereview.com/wp-content/uploads/2021/06/electrical-engineer.jpg" alt="Installation">
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Premium Showcase Card - Dark Theme -->
+<div class="card-premium" data-category="security">
+    <div class="card-visual">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Security Systems">
+        <div class="premium-badge">Premium Service</div>
+    </div>
+    <div class="card-content">
+        <h3>Advanced Security Systems</h3>
+        <p>Complete security solutions including CCTV surveillance, access control, alarm systems, and 24/7 monitoring services.</p>
+        <div class="service-highlights">
+            <span>✓ 24/7 Monitoring</span>
+            <span>✓ Remote Access</span>
+            <span>✓ AI Detection</span>
+        </div>
+        <button class="btn-featured">Get Security Assessment</button>
+    </div>
+</div>
+
+<!-- Tech Cards Container for Left/Right Layout -->
+<div class="tech-cards-container">
+    <!-- Network Solutions - Left Card -->
+    <div class="card-tech network-left" data-category="networking">
+        <div class="tech-visual">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Networking Solutions">
+            <div class="tech-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+        </div>
+        <div class="tech-content">
+            <h4>Networking Solutions</h4>
+            <p>Professional network infrastructure design, installation, and maintenance for homes and businesses.</p>
+            <div class="tech-stats">
+                <span>300+ Networks Installed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gate Automation - Right Card -->
+    <div class="card-tech automation-right" data-category="automation">
+        <div class="tech-visual">
+            <img src="https://pentagonfencing.com.au/wp-content/uploads/2024/01/gate-automation-system.jpg" alt="Gate Automation">
+            <div class="tech-icon">
+                <i class="fas fa-door-open"></i>
+            </div>
+        </div>
+        <div class="tech-content">
+            <h4>Gate & Door Automation</h4>
+            <p>Smart automated gates and doors with remote control, access management, and security integration.</p>
+            <div class="tech-stats">
+                <span>450+ Automated Entries</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Visual Impact Cards - Mixed Themes -->
+<div class="card-visual-impact dark-theme" data-category="electrical">
+    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electric Fence">
+    <div class="impact-overlay">
+        <h4>Electric Fence Systems</h4>
+        <p>High-security perimeter protection with intelligent detection systems.</p>
+    </div>
+</div>
+
+<!-- Compact Service Cards with Clear Images -->
+<div class="cards-compact-grid">
+  
+  <!-- Escalators -->
+  <div class="card-compact" data-category="escalators" 
+       style="background-image: url('https://www.elefinetech.com/wp-content/uploads/2024/07/tripod-turnstile-10.jpg');">
+    <div class="card-overlay"></div>
+    <h5>Turnstiles</h5>
+    <p>Secure crowd management solutions</p>
+  </div>
+
+  <!-- Parking Barriers -->
+  <div class="card-compact dark-theme" data-category="barriers" 
+       style="background-image: url('https://www.lifeco-uk.com/wp-content/uploads/2024/02/6-Fire-Valves.webp');">
+    <div class="card-overlay"></div>
+    <h5>Fire Systems</h5>
+    <p>Advanced detection and suppression</p>
+  </div>
+  
+</div>
+
+<!-- Comprehensive Solution Card - Light Theme -->
+<div class="card-comprehensive" data-category="comprehensive">
+    <div class="comprehensive-content">
+        <div class="comprehensive-text">
+            <h3>Complete Installation & Maintenance</h3>
+            <p>From electric fences to escalators, we handle installation, maintenance, and energizing of all security and automation products.</p>
+            <div class="comprehensive-list">
+                <span>CCTV & Surveillance Systems</span>
+                <span>Electric Fences & Barriers</span>
+                <span>Automatic Gates & Doors</span>
+                <span>Access Control Systems</span>
+            </div>
+        </div>
+        <div class="comprehensive-visual">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Installation Services">
+        </div>
+    </div>
+</div>
+
+    <!-- CTA Section -->
+    <div class="services-cta">
+      <div class="cta-content">
+        <h2>Ready to Start Your Security Story?</h2>
+        <p>Join 2,500+ satisfied clients who trust us with their security and automation needs.</p>
+        <div class="cta-buttons">
+          <button class="btn-cta-primary">Begin Your Project</button>
+          <button class="btn-cta-secondary">View Our Portfolio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Showcase Section -->
+<section id="projects">
+  <div class="container">
+    <!-- Projects Hero -->
+    <div class="projects-hero">
+      <div class="hero-content">
+        <span class="project-hero-badge">Projects</span>
+        <h1 class="project-hero-title">Transforming Uganda, One Project at a Time</h1>
+        <p class="hero-subtitle">
+          From residential smart homes to enterprise security systems, discover how we've been 
+          building safer, smarter spaces across Uganda since 2015.
+        </p>
+        <div class="projects-stats">
+          <div class="stat">
+            <span class="number">2,500+</span>
+            <span class="label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="number">15+</span>
+            <span class="label">Cities Covered</span>
+          </div>
+          <div class="stat">
+            <span class="number">99.9%</span>
+            <span class="label">Success Rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Projects Mosaic Grid -->
+    <div class="projects-mosaic">
+      <!-- Large Featured Project -->
+      <div class="project-card featured" data-category="commercial security">
+        <div class="project-visual">
+          <img src="https://newvision-media.s3.amazonaws.com/cms/c907ee11-6681-462c-bbbc-40c67580ab49.jpg" alt="Uganda Police Headquarters">
+          <div class="project-overlay">
+            <div class="project-badge">Featured</div>
+            <div class="project-actions">
+              <button class="action-btn view-btn">
+                <i class="fas fa-expand"></i>
+              </button>
+              <button class="action-btn like-btn">
+                <i class="fas fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="category">Security Systems</span>
+            <span class="year">2023</span>
+          </div>
+          <h3 class="project-title">Uganda Police Headquarters</h3>
+          <p class="project-description">
+            Complete security overhaul with 150+ CCTV cameras, access control systems, 
+            and advanced surveillance technology for national security operations.
+          </p>
+          <div class="project-features">
+            <span>150+ Cameras</span>
+            <span>Access Control</span>
+            <span>24/7 Monitoring</span>
+          </div>
+          <div class="project-client">
+            <div class="client-info">
+              <strong>Client:</strong> Uganda Police Force
+            </div>
+            <div class="project-duration">
+              <strong>Duration:</strong> 6 Months
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medium Project Card -->
+      <div class="project-card medium" data-category="residential automation">
+        <div class="project-visual">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.g-CA8JDsUKAmC7N-JYhphwHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Smart Luxury Villa">
+          <div class="project-overlay">
+            <div class="project-badge">Residential</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Kololo Smart Villa</h3>
+          <p class="project-description">
+            Complete home automation system with voice-controlled lighting, 
+            climate control, and integrated security for a luxury residential property.
+          </p>
+          <div class="project-stats">
+            <div class="stat">
+              <i class="fas fa-home"></i>
+              <span>5-Bedroom Villa</span>
+            </div>
+            <div class="stat">
+              <i class="fas fa-lightbulb"></i>
+              <span>Smart Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medium Project Card -->
+      <div class="project-card medium" data-category="commercial">
+        <div class="project-visual">
+          <img src="https://i.pinimg.com/originals/2b/53/23/2b5323d6794e37b23c23ad3c00552c0c.jpg" alt="Commercial Complex">
+          <div class="project-overlay">
+            <div class="project-badge">Commercial</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Acacia Mall Security</h3>
+          <p class="project-description">
+            Enterprise-grade security system for one of Kampala's largest shopping malls 
+            with turnstiles, parking systems, and surveillance.
+          </p>
+          <div class="project-stats">
+            <div class="stat">
+              <i class="fas fa-shield-alt"></i>
+              <span>Multi-layer Security</span>
+            </div>
+            <div class="stat">
+              <i class="fas fa-users"></i>
+              <span>10,000+ Daily Visitors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small Project Card -->
+      <div class="project-card small" data-category="residential security">
+        <div class="project-visual">
+          <img src="https://th.bing.com/th/id/R.95433fae561818c7a723b75acfec0e74?rik=U%2busZ0UziAiM4g&riu=http%3a%2f%2f3.bp.blogspot.com%2f-TSx4sPwrqwA%2fU1gOBio2VKI%2fAAAAAAAAJq8%2fE2cnvFkU4r8%2fs1600%2fSAM_4001.JPG&ehk=QcYX6ffwMDGI2x449eO3zj1RuSwZHRM5W5wID%2bRZ02U%3d&risl=&pid=ImgRaw&r=0" alt="Family Home Security">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Ntinda Family Home</h3>
+          <p class="project-description">
+            Comprehensive CCTV and alarm system installation for family safety.
+          </p>
+          <div class="project-tags">
+            <span>CCTV</span>
+            <span>Alarm System</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small Project Card -->
+      <div class="project-card small" data-category="automation">
+        <div class="project-visual">
+          <img src="https://tse3.mm.bing.net/th/id/OIP.P2cfTwedl-c6tCM4G8bjgAHaEf?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Smart Apartment">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Bugolobi Smart Apartment</h3>
+          <p class="project-description">
+            Voice-controlled automation system for modern apartment living.
+          </p>
+          <div class="project-tags">
+            <span>Voice Control</span>
+            <span>Lighting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Project Card -->
+      <div class="project-card story" data-category="government">
+        <div class="project-content">
+          <div class="story-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 class="project-title">Ministry of Health Project</h3>
+          <p class="project-description">
+            "Smart Homes UG delivered exceptional security systems for our medical facilities. 
+            Their professionalism and technical expertise ensured our sensitive areas remain secure."
+          </p>
+          <div class="client-testimonial">
+            <div class="client-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Client">
+            </div>
+            <div class="client-details">
+              <strong>Dr. James Kato</strong>
+              <span>Director, Medical Services</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Large Project Card -->
+      <div class="project-card large" data-category="commercial security">
+        <div class="project-visual">
+          <img src="https://safeguardsystems.co.uk/wp-content/uploads/2023/03/how-many-cctv-cameras-do-i-need-to-protect-my-business.jpg" alt="Industrial Security">
+          <div class="project-overlay">
+            <div class="project-badge">Industrial</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Mukwano Industries Complex</h3>
+          <p class="project-description">
+            Comprehensive industrial security solution covering 50-acre facility with 
+            perimeter protection, access control, and fire alarm systems.
+          </p>
+          <div class="project-details">
+            <div class="detail">
+              <i class="fas fa-ruler-combined"></i>
+              <span>50 Acre Facility</span>
+            </div>
+            <div class="detail">
+              <i class="fas fa-camera"></i>
+              <span>200+ Cameras</span>
+            </div>
+            <div class="detail">
+              <i class="fas fa-fire-extinguisher"></i>
+              <span>Fire Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small Project Card -->
+      <div class="project-card small" data-category="residential">
+        <div class="project-visual">
+          <img src="https://www.salvioniarredamenti.it/wp-content/uploads/2021/07/Casa-Lugano-9-3-scaled.jpg" alt="Modern Home">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Lugogo Modern Home</h3>
+          <p class="project-description">
+            Smart home integration with security and entertainment systems.
+          </p>
+          <div class="project-tags">
+            <span>Entertainment</span>
+            <span>Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Card -->
+      <div class="project-card stats" data-category="all">
+        <div class="stats-content">
+          <div class="stat-item">
+            <span class="stat-number">9</span>
+            <span class="stat-label">Years of Excellence</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">75+</span>
+            <span class="stat-label">Enterprise Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Cities Served</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="projects-cta">
+      <div class="cta-content">
+        <h1>Ready to Start Your Project?</h1>
+        <p>Join 2,500+ satisfied clients who trust us with their security and automation needs.</p>
+        <div class="cta-buttons">
+          <button class="btn-cta-primary">Start Your Project</button>
+          <button class="btn-cta-secondary">View Case Studies</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Modern Clients Section -->
+<section id="clients" class="clients-modern">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="clients-header">
+      <span class="section-badge">Trusted Partnerships</span>
+      <h2 class="section-title">Our Valued Clients</h2>
+      <p class="section-subtitle">
+        Building lasting relationships with Uganda's leading organizations through exceptional service and reliable solutions
+      </p>
+    </div>
+
+    <!-- Client Showcase -->
+    <div class="client-showcase">
+      <!-- Featured Client -->
+      <div class="featured-client">
+        <div class="client-visual">
+          <div class="client-logo-large">
+            <img src="https://th.bing.com/th/id/R.ccf53e79d43ca4609034888280e095fe?rik=oxkN6OZUMaHwAQ&riu=http%3a%2f%2fwww.informationng.com%2fwp-content%2fuploads%2f2015%2f05%2fDStv-new-logo.jpg&ehk=tpk61Pclyp1n1WayaYqSPlCfrmGShgr5coqhpJy5uho%3d&risl=&pid=ImgRaw&r=0" alt="DSTV">
+          </div>
+          <div class="partnership-badge">
+            <span>10+ Years Partnership</span>
+          </div>
+        </div>
+        <div class="client-details">
+          <h3>DSTV Corporation</h3>
+          <p class="client-description">
+            For over a decade, DSTV Corporation has trusted us with their security and automation needs. 
+            Our long-term collaboration showcases our commitment to reliability and innovation in serving 
+            one of Africa's leading media companies.
+          </p>
+          <div class="partnership-stats">
+            <div class="stat">
+              <span class="number">10+</span>
+              <span class="label">Years</span>
+            </div>
+            <div class="stat">
+              <span class="number">50+</span>
+              <span class="label">Projects</span>
+            </div>
+            <div class="stat">
+              <span class="number">100%</span>
+              <span class="label">Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      </div>
+
+      
+      
+    </div>
+
+    <!-- Modern Clients Section -->
+<section class="clients-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Trusted by Industry Leaders</h2>
+      <p class="section-subtitle">
+        Partnering with forward-thinking organizations to deliver exceptional smart home solutions
+      </p>
+    </div>
+
+    <div class="clients-grid">
+      <!-- DSTV -->
+      <div class="client-item shape-rectangle-large">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://xplorio.com/xplorio/categories/29411/MNET_DSTV_Logo_WithTM_No_Bgr_CMYK_1541756985.png?width=200"
+            alt="DSTV"
+          />
+        </div>
+      </div>
+
+      <!-- Uganda Police -->
+      <div class="client-item shape-circle">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://yt3.ggpht.com/a/AATXAJxtXS2Ft1apSpCXL_CBIFS_Bd3anNsATT1zeA=s900-c-k-c0xffffffff-no-rj-mo"
+            alt="Uganda Police"
+          />
+        </div>
+      </div>
+
+      <!-- Kafika Animal Feeds -->
+      <div class="client-item shape-diamond">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://is2-ssl.mzstatic.com/image/thumb/Purple114/v4/bf/01/27/bf0127dd-3fba-8798-b8dd-8d25bb9f8cf0/source/512x512bb.jpg"
+            alt="Kafika Animal Feeds"
+          />
+        </div>
+      </div>
+
+      <!-- Fields of Life -->
+      <div class="client-item shape-hexagon">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://fieldsoflife.org/wp-content/uploads/2023/04/fields-of-life-site-image.png"
+            alt="Fields of Life"
+          />
+        </div>
+      </div>
+
+      <!-- TORINO Bar & Restaurant -->
+      <div class="client-item shape-rounded-square">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://tse3.mm.bing.net/th/id/OIP.ikJdi3ARrD6emocRLcx3JAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="TORINO Bar & Restaurant"
+          />
+        </div>
+      </div>
+
+      <!-- HUAWEI -->
+      <div class="client-item shape-oval">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://logos-world.net/wp-content/uploads/2020/04/Huawei-Logo-2018-present.jpg"
+            alt="HUAWEI"
+          />
+        </div>
+      </div>
+
+      <!-- Taibah International School -->
+      <div class="client-item shape-pentagon">
+        <div class="client-logo-container">
+          <img
+            class="client-logo"
+            src="https://tse2.mm.bing.net/th/id/OIP.1Bp8B2hFFt39skYJxEjV6QHaD0?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Taibah International School"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
+
+    <!-- Trust Indicators -->
+    <div class="trust-indicators">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h4>Long-term Partnerships</h4>
+        <p>Average client relationship of 5+ years</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h4>Reliable Service</h4>
+        <p>99.9% system uptime guarantee</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h4>24/7 Support</h4>
+        <p>Round-the-clock technical assistance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Modern Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Voices of Satisfaction</h2>
+            <p class="section-subtitle">
+              Discover why thousands of homeowners trust Smart HomesUg to
+              transform their living experience with cutting-edge automation.
+            </p>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card scale-in">
+              <div
+                class="testimonial-highlight"
+                style="--x: 70%; --y: 30%"
+              ></div>
+              <div class="quote-design">
+                <i class="fas fa-quote-right"></i>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+              </div>
+              <p class="testimonial-content">
+                "The installation was seamless, and the system has completely
+                transformed how we interact with our home. The energy savings
+                alone paid for the system in under two years."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">JS</div>
+                <div class="author-info">
+                  <h4>Mr Juuko Richard</h4>
+                  <p>Homeowner</p>
+                  <div class="stats-badge">
+                    <i class="fas fa-bolt"></i>
+                    42% Energy Saved
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card scale-in">
+              <div
+                class="testimonial-highlight"
+                style="--x: 30%; --y: 60%"
+              ></div>
+              <div class="quote-design">
+                <i class="fas fa-quote-right"></i>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+              </div>
+              <p class="testimonial-content">
+                "As someone who travels frequently, having remote access to my
+                home's security and climate control gives me incredible peace of
+                mind. The app is intuitive and reliable."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">MR</div>
+                <div class="author-info">
+                  <h4>Autuhaire Edgar</h4>
+                  <p>Frequent Traveler</p>
+                  <div class="stats-badge">
+                    <i class="fas fa-globe"></i>
+                    15 Countries Accessed
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card scale-in">
+              <div
+                class="testimonial-highlight"
+                style="--x: 60%; --y: 70%"
+              ></div>
+              <div class="quote-design">
+                <i class="fas fa-quote-right"></i>
+              </div>
+              <div class="testimonial-rating">
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+                <i class="fas fa-star rating-star"></i>
+              </div>
+              <p class="testimonial-content">
+                "The customer support team is exceptional. They walked me
+                through the setup process and were available whenever I had
+                questions. Highly recommended!"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">Mrs</div>
+                <div class="author-info">
+                  <h4>Nalwadda Olivia</h4>
+                  <p>Tech Enthusiast</p>
+                  <div class="stats-badge">
+                    <i class="fas fa-clock"></i>
+                    24/7 Support
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Cool Contact Section -->
+<section id="contact" >
+  <div class="container">
+    <!-- Animated Header -->
+    <div class="contact-header-cool">
+      <div class="floating-badge">🚀 Let's Connect</div>
+      <h1 class="glitch-title">Ready to <span class="highlight">Secure</span> Your Space?</h1>
+      <p class="pulse-text">Get a free consultation and transform your property today</p>
+    </div>
+
+    <div class="contact-grid-cool">
+      <!-- Interactive Form -->
+      <div class="form-section-cool">
+        <div class="form-card">
+          <div class="form-header-cool">
+            <div class="form-icon">💬</div>
+            <h3>Send us a Message</h3>
+            <p>We respond faster than your security system! ⚡</p>
+          </div>
+
+<form class="contact-form-cool" id="contactForm">
+  <div class="input-row">
+    <div class="input-container">
+      <input type="text" name="firstName" required class="cool-input">
+      <label class="cool-label">First Name</label>
+      <div class="input-highlight"></div>
+    </div>
+    <div class="input-container">
+      <input type="text" name="lastName" required class="cool-input">
+      <label class="cool-label">Last Name</label>
+      <div class="input-highlight"></div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input type="email" name="email" required class="cool-input">
+    <label class="cool-label">Email Address</label>
+    <div class="input-highlight"></div>
+  </div>
+
+  <div class="input-container">
+    <input type="tel" name="contactNumber" required class="cool-input">
+    <label class="cool-label">Phone Number</label>
+    <div class="input-highlight"></div>
+  </div>
+
+  <div class="input-container">
+    <textarea name="message" required rows="4" class="cool-input textarea-cool"></textarea>
+    <label class="cool-label">Tell us about your security needs</label>
+    <div class="input-highlight"></div>
+  </div>
+
+  <button type="submit" class="submit-btn-cool">
+    <span class="btn-text">Secure Your Message 🔒</span>
+    <div class="btn-shine"></div>
+  </button>
+</form>
+
+<!-- Professional Success Popup -->
+<div class="success-popup" id="successPopup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <div class="company-badge">
+        <span class="shield-icon">🛡️</span>
+        <span class="company-name">SecureShield Pro</span>
+      </div>
+    </div>
+    
+    <div class="popup-body">
+      <div class="success-animation">
+        <div class="checkmark">✓</div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring delay-1"></div>
+        <div class="pulse-ring delay-2"></div>
+      </div>
+      
+      <h3>Message Secured & Delivered</h3>
+      <p class="success-message">
+        Thank you for choosing <strong>SecureShield Pro</strong>. Your security inquiry has been 
+        encrypted and delivered to our team. A dedicated security specialist will contact you 
+        within <strong>2 business hours</strong> to discuss your protection needs.
+      </p>
+      
+      <div class="next-steps">
+        <div class="step">
+          <span class="step-icon">📞</span>
+          <span class="step-text">Expect our call from a verified number</span>
+        </div>
+        <div class="step">
+          <span class="step-icon">✉️</span>
+          <span class="step-text">Check your email for confirmation</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup-footer">
+      <button class="popup-close-btn" onclick="closeSuccessPopup()">
+        <span>Continue Browsing</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+
+      <!-- Contact Info with Animations -->
+      <div class="info-section-cool">
+        <!-- Company Card -->
+        <div class="company-card">
+          <div class="company-glow"></div>
+          <h2>Smart Homes UG</h2>
+          <p class="tagline">⚡ Secure Solutions ⚡</p>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="contact-methods-cool">
+          <div class="contact-card email-card">
+            <div class="card-icon">📧</div>
+            <div class="card-content">
+              <h4>Email Us</h4>
+              <p class="contact-detail">info@smarthomesug.com</p>
+              <span class="contact-sub">Lightning fast replies!</span>
+            </div>
+            <div class="card-sparkle">✨</div>
+          </div>
+
+          <div class="contact-card phone-card">
+            <div class="card-icon">📞</div>
+            <div class="card-content">
+              <h4>Call Us</h4>
+              <p class="contact-detail">+256 787 393053</p>
+              <span class="contact-sub">Available 8AM - 8PM</span>
+            </div>
+            <div class="card-sparkle">✨</div>
+          </div>
+
+          <div class="contact-card location-card">
+            <div class="card-icon">📍</div>
+            <div class="card-content">
+              <h4>Visit Us</h4>
+              <p class="contact-detail">Luwum Street Universal House</p>
+              <a href="https://www.google.com/maps/search/Luwum+Street+Universal+House" target="_blank" class="map-link-cool">
+                View on Maps 🗺️
+              </a>
+            </div>
+            <div class="card-sparkle">✨</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions-cool">
+          <h4>Instant Connect</h4>
+          <div class="action-buttons-cool">
+            <a href="https://wa.me/+256787393053" class="action-btn-cool whatsapp-cool">
+              <span class="btn-icon">💬</span>
+              <span>WhatsApp</span>
+              <div class="btn-pulse"></div>
+            </a>
+            <a href="tel:+256787393053" class="action-btn-cool call-cool">
+              <span class="btn-icon">📞</span>
+              <span>Call Now</span>
+              <div class="btn-pulse"></div>
+            </a>
+          </div>
+        </div>
+
+   
+      </div>
+    </div>
+
+ 
+</section>
+    </main>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+      <!-- Company Info -->
+      <div class="footer-section">
+        <div class="company-brand">
+          <h3>Smart Homes UG</h3>
+          <p class="footer-subtitle">Secure Solutions</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:smarthomesug@gmail.com">info@smarthomesug.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+256787393053">+256 787 393053</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address</strong>
+              <a href="https://maps.google.com/?q=Luwum+Street+Universal+House" target="_blank">
+                Luwum Street Universal House
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <i class="fas fa-shield-check"></i>
+            <span>Certified Installers</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-award"></i>
+            <span>9+ Years Experience</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About Us</a></li>
+          <li><a href="#services" class="footer-link">Services</a></li>
+          <li><a href="#projects" class="footer-link">Projects</a></li>
+          <li><a href="#clients" class="footer-link">Clients</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+        
+        <!-- Services Quick Links -->
+        <div class="services-quick">
+          <h4>Our Services</h4>
+          <div class="service-tags">
+            <span>CCTV Systems</span>
+            <span>Home Automation</span>
+            <span>Access Control</span>
+            <span>Security Systems</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter & Business Hours -->
+      <div class="footer-section">
+        <div class="newsletter-section">
+          <h3>Stay Updated</h3>
+          <p>Get the latest news and exclusive offers from Smart Homes UG</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <div class="input-group">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="newsletter-input"
+                required
+              />
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Subscribe
+              </button>
+            </div>
+            <div class="form-note">
+              <i class="fas fa-lock"></i>
+              <span>We respect your privacy. Unsubscribe at any time.</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="business-hours">
+          <h4>Business Hours</h4>
+          <div class="hours-list">
+            <div class="hour-item">
+              <span>Monday - Friday</span>
+              <span>8:00 AM - 8:00 PM</span>
+            </div>
+            <div class="hour-item">
+              <span>Saturday</span>
+              <span>9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hour-item">
+              <span>Sunday</span>
+              <span>10:00 AM - 4:00 PM</span>
+            </div>
+            <div class="hour-item emergency">
+              <span>Emergency Support</span>
+              <span>24/7 Available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <!-- Trust Seals -->
+      <div class="trust-seals">
+        <div class="seal">
+          <i class="fas fa-shield-alt"></i>
+          <span>Secure Installations</span>
+        </div>
+        <div class="seal">
+          <i class="fas fa-clock"></i>
+          <span>24/7 Support</span>
+        </div>
+        <div class="seal">
+          <i class="fas fa-certificate"></i>
+          <span>Licensed & Insured</span>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <p>
+          <i class="fas fa-exclamation-triangle"></i>
+          Disclaimer: The specification details on this page are provided
+          for reference purposes only. Smart Homes UG does not make any
+          claims or guarantees in respect of the features, services, and
+          products mentioned. All installations require professional assessment.
+        </p>
+      </div>
+
+      <!-- Legal & Social -->
+      <div class="footer-legal">
+        <div class="legal-info">
+          <div class="copyright">
+            <p>&copy; 2024 Smart Homes UG. All rights reserved.</p>
+          </div>
+          <div class="legal-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/cookies">Cookie Policy</a>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <div class="social-group">
+            <span>Follow Us:</span>
+            <a href="https://facebook.com/" target="_blank" aria-label="Facebook" class="social-link">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/+256787393053" target="_blank" aria-label="WhatsApp" class="social-link">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter" class="social-link">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="social-link">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://instagram.com/" target="_blank" aria-label="Instagram" class="social-link">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          
+          <!-- Payment Methods -->
+          <div class="payment-methods">
+            <span>We Accept:</span>
+            <div class="payment-icons">
+              <i class="fab fa-cc-visa" title="Visa"></i>
+              <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+              <i class="fab fa-cc-paypal" title="PayPal"></i>
+              <i class="fas fa-mobile-alt" title="Mobile Money"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <!-- <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button> -->
+
+      <!-- WhatsApp Float Button -->
+     <!-- Enhanced WhatsApp Widget - Always Visible -->
+<div class="whatsapp-widget">
+  <div class="whatsapp-float">
+    <a href="https://wa.me/+256787393053" target="_blank" class="whatsapp-link">
+      <div class="whatsapp-icon">
+        <i class="fab fa-whatsapp"></i>
+        <div class="notification-badge" id="whatsappNotification">1</div>
+      </div>
+      <div class="pulse-ring"></div>
+    </a>
+    
+    <div class="whatsapp-tooltip">
+      <span>Chat with us!</span>
+      <div class="tooltip-arrow"></div>
+    </div>
+  </div>
+
+  <!-- Quick Action Menu -->
+  <div class="whatsapp-quick-actions">
+    <div class="action-header">
+      <span>Quick Options</span>
+    </div>
+    <div class="action-buttons">
+      <a href="https://wa.me/+256787393053?text=Hi!%20I%20need%20information%20about%20smart%20home%20security%20systems" 
+         target="_blank" class="action-btn">
+        <i class="fas fa-shield-alt"></i>
+        <span>Security Info</span>
+      </a>
+      <a href="https://wa.me/+256787393053?text=Hello!%20I%20would%20like%20to%20book%20a%20free%20consultation" 
+         target="_blank" class="action-btn">
+        <i class="fas fa-calendar"></i>
+        <span>Book Consultation</span>
+      </a>
+      <a href="https://wa.me/+256787393053?text=Hi,%20I%20need%20technical%20support%20for%20my%20system" 
+         target="_blank" class="action-btn">
+        <i class="fas fa-headset"></i>
+        <span>Support</span>
+      </a>
+      <a href="https://wa.me/+256787393053?text=Can%20you%20send%20me%20pricing%20information%20for%20your%20services?" 
+         target="_blank" class="action-btn">
+        <i class="fas fa-tag"></i>
+        <span>Get Pricing</span>
+      </a>
+    </div>
+  </div>
+</div>
     </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('success').style.display = 'block';
-            this.reset();
-            setTimeout(() => {
-                document.getElementById('success').style.display = 'none';
-            }, 5000);
-        });
-    </script>
-</body>
+    <!-- Scripts -->
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="app.js"></script>
+    <!-- <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/forms.js"></script>
+  </body>
 </html>
